@@ -45,5 +45,5 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Seoul
 RUN apt-get update
 RUN apt-get install tzdata
-```
 RUN apt-get install -y vim git curl net-tools iputils-ping
+```
