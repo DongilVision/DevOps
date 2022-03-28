@@ -35,15 +35,22 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo usermod -aG docker $USER
 visudo
 
-# docker dns 안될경우, 특히 apt-update 않될때.
+### docker dns 안될경우, 특히 apt-update 않될때.
 docker build --network=host -t div/uhome:0.1 .  
 호스트 쪽의 dns를 사용하도록 한다.  
 
-# Docker 내부 시간 (KST설정)
+### Docker 내부 시간 (KST설정)
 ```
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Seoul
 RUN apt-get update
 RUN apt-get install tzdata
 RUN apt-get install -y vim git curl net-tools iputils-ping
+RUN apt-get -y install python3.8 python3-pip
+RUN pip3 install flask flask_cors flask_restx
+```
+### Docker User:Group 권한부여 수행
+```
+docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너이름)
+-p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
 ```
