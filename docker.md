@@ -36,5 +36,14 @@ sudo usermod -aG docker $USER
 visudo
 
 # docker dns 안될경우, 특히 apt-update 않될때.
-docker build --network=host -t div/uhome:0.1 .
-호스트 쪽의 dns를 사용하도록 한다.
+docker build --network=host -t div/uhome:0.1 .  
+호스트 쪽의 dns를 사용하도록 한다.  
+
+# Docker 내부 시간 (KST설정)
+```
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Seoul
+RUN apt-get update
+RUN apt-get install tzdata
+```
+RUN apt-get install -y vim git curl net-tools iputils-ping
