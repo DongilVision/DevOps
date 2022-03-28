@@ -34,3 +34,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 @Docker 권한
 sudo usermod -aG docker $USER
 visudo
+
+# docker dns 안될경우, 특히 apt-update 않될때.
+docker build --network=host -t div/uhome:0.1 .
+호스트 쪽의 dns를 사용하도록 한다.
