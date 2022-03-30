@@ -54,6 +54,16 @@ RUN pip3 install flask flask_cors flask_restx
 ```
 ### Docker 수행시, 권한부여 (User:Group)
 ```
+RUN mkdir /content
+RUN chmod 777 /content
+
+RUN addgroup --gid 1001 jjy
+RUN useradd -rm -d /home/jjy -s /bin/bash -g 1001 -G sudo -u 1001 jjy
+USER jjy
+
+WORKDIR /content
+```
+```
 docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너이름)
 -p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
 ```
