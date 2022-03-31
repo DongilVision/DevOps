@@ -1,0 +1,75 @@
+#########################################
+#
+#   DongilVision
+#   GPU cuDNN 8 / Ubuntu 20.04
+#    2021.08.21, 8/31
+#   
+##########################################
+
+FROM nvidia/cuda:11.2.2-cudnn8-devel-ubuntu20.04
+# python3, pip3 included
+
+# =============================================================================================
+# =  1.  BASIC
+# =============================================================================================
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Seoul
+RUN apt-get update
+RUN apt-get install -y vim git curl net-tools iputils-ping
+
+# *************************************************************************************
+# =  2. SSHD 
+# =  /usr/sbin/sshd -D &
+# *************************************************************************************
+
+#set password
+RUN mkdir /var/run/sshd
+RUN apt-get install -y openssh-server
+RUN echo 'root:1234' | chpasswd
+RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+RUN sed -i "s/^#Port 22/Port 9022/g" /etc/ssh/sshd_config
+
+#make .ssh
+RUN mkdir /root/.ssh
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+EXPOSE 9022
+
+# *************************************************************************************
+# =  3.  CODE-SERVER (MS-VisualCode Stlye Terminal)
+# *************************************************************************************
+ENV PASSWORD=1234
+RUN apt update -y && apt upgrade -y && apt install -y curl nginx vim telnet ssh 
+RUN curl -fsSL https://code-server.dev/install.sh | sh 
+ADD cert.tar.gz /root/ 
+COPY code-server.conf /etc/nginx/sites-available/ 
+RUN ln -s /etc/nginx/sites-available/code-server.conf /etc/nginx/sites-enabled/code-server.conf 
+COPY execute_codeserver.sh /tmp/ 
+EXPOSE 443
+
+# *************************************************************************************
+# =  4.  jupter lab
+# *************************************************************************************
+# "jupyter lab --no-browser --allow-root --ip='*' --NotebookApp.iopub_data_rate_limit=1.0e10 --NotebookApp.token=1234"
+
+RUN apt install -y python3-pip
+RUN pip3 install jupyter jupyterlab nbconvert
+EXPOSE 8888
+
+# *************************************************************************************
+# cuDNN8
+# *************************************************************************************
+ENV LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64
+RUN echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+RUN ln -s /usr/local/cuda-11.2/lib64/libcusolver.so /usr/local/cuda-11.2/lib64/libcusolver.so.10
+
+RUN apt-get -y install python3.8 python3-pip
+RUN python3 -m pip install --upgrade pip
+
+COPY app_start.sh /root/
+RUN mkdir /content
+WORKDIR /content
+
+# 확인방법
+# shell 접속하여 nvidia-smi 명령을 사용하여 확인함.
