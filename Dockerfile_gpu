@@ -73,3 +73,9 @@ WORKDIR /content
 
 # 확인방법
 # shell 접속하여 nvidia-smi 명령을 사용하여 확인함.
+# 실행방법 ( GPU 획득방법 )
+# 원래는 docker conatiner 내에서 nvidia GPU를 사용하기 위해 nvidia-docker 혹은 nvidia-docker2를 따로 설치해줘야했다.   
+# 하지만 docker 19.03 버전부터는 docker 자체적으로 nvidia GPU를 지원하고 nvidia-docker는 사용하지 않는다.  
+# docker run ... --gpus "device=1,2,3" ...
+# docker run ... --gpus all ... 
+# https://conservatory.tistory.com/12
