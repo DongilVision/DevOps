@@ -38,9 +38,8 @@ visudo
 ```
 
 ## 도커 빌드 및 실행
-### Docker Build 
 
-### 도커 빌드 및 수행
+### 도커 빌드
 ```
 docker build --network=host -t div/sus:0.1 .
 docker run --rm -it --hostname _docker --name div_sus_001 div/sus:0.1 
@@ -78,3 +77,6 @@ USER jjy
 WORKDIR /content
 ```
 
+## 도커예제
+
+* https://github.com/facebookresearch/detectron2/blob/main/docker/Dockerfile
