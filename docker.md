@@ -48,6 +48,7 @@ docker run --rm -it --user jjy:jjy --hostname _docker --name div_user_001 -p 801
 docker ps
 ```
 ```
+docker run --gpus all -it -p 8888:8888 -p 6006:6006 --ipc=host -v $(pwd):/workspace hello:1.0 /bin/bash
 docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너이름)
 -p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
 ```
