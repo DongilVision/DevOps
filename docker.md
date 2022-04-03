@@ -32,8 +32,10 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 ## 일반사용자 환경설정
+```
 sudo usermod -aG docker $USER
 visudo
+```
 
 ## 도커 빌드 및 실행
 ### Docker Build 
