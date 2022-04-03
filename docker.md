@@ -45,9 +45,11 @@ docker build --network=host -t div/uhome:0.1 .
 호스트 쪽의 dns를 사용하도록 한다.  
 ```
 ### Docker Build
+```
 docker build --network=host -t div/sus:0.1 .
 docker run --rm -it --hostname _docker --name div_sus_001 div/sus:0.1 
 docker run --rm -it --user jjy:jjy --hostname _docker --name div_user_001 -p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/sus:0.1 
+```
 
 ### Docker 시간 (KST설정)
 ```
