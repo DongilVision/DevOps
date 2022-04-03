@@ -39,19 +39,24 @@ visudo
 
 ## 도커 빌드 및 실행
 ### Docker Build 
+
+### 도커 빌드 및 수행
+```
+docker build --network=host -t div/sus:0.1 .
+docker run --rm -it --hostname _docker --name div_sus_001 div/sus:0.1 
+docker run --rm -it --user jjy:jjy --hostname _docker --name div_user_001 -p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/sus:0.1 
+docker ps
+```
+```
+docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너이름)
+-p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
+```
 * dns 안될경우, 특히 apt-update 않될때.
 ```
 docker build --network=host -t div/uhome:0.1 .  
 호스트 쪽의 dns를 사용하도록 한다.  
 ```
-### Docker Build
-```
-docker build --network=host -t div/sus:0.1 .
-docker run --rm -it --hostname _docker --name div_sus_001 div/sus:0.1 
-docker run --rm -it --user jjy:jjy --hostname _docker --name div_user_001 -p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/sus:0.1 
-```
-
-### Docker 시간 (KST설정)
+### 도커화일 (KST설정)
 ```
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Seoul
@@ -61,7 +66,7 @@ RUN apt-get install -y vim git curl net-tools iputils-ping
 RUN apt-get -y install python3.8 python3-pip
 RUN pip3 install flask flask_cors flask_restx
 ```
-### Docker 수행시, 권한부여 (User:Group)
+### 도커화일 (User:Group)
 ```
 RUN mkdir /content
 RUN chmod 777 /content
@@ -72,7 +77,4 @@ USER jjy
 
 WORKDIR /content
 ```
-```
-docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너이름)
--p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
-```
+
