@@ -31,10 +31,11 @@ apt-get install docker-ce docker-ce-cli containerd.io
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-@Docker 권한
+## 일반사용자 환경설정
 sudo usermod -aG docker $USER
 visudo
 
+## 도커 빌드 및 실행
 ### Docker Build 
 * dns 안될경우, 특히 apt-update 않될때.
 ```
