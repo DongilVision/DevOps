@@ -1,8 +1,12 @@
+
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=12&section=header&text='도커사용법'&fontSize=50)
+
+
 https://github.com/DongilVision/DevOps/blob/main/README.md
 
 
 
-![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=12&section=header&text='도커사용법'&fontSize=12)
+
 
 ### 실행명령어
 ```
