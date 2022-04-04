@@ -1,4 +1,4 @@
-https://github.com/DongilVision/DevOps/blob/main/docker.md
+https://github.com/DongilVision/DevOps/blob/main/README.md
 
 
 원래는 docker conatiner 내에서 nvidia GPU를 사용하기 위해 nvidia-docker 혹은 nvidia-docker2를 따로 설치해줘야했다. 하지만 docker 19.03 버전부터는 docker 자체적으로 nvidia GPU를 지원하고 nvidia-docker는 사용하지 않는다.
