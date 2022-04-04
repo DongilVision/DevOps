@@ -32,7 +32,7 @@ docker run --rm -it --user jjy:jjy --hostname _docker --name div_user_001 -p 801
        -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/sus:0.1 
 docker ps
 ```
-### 도커명령어
+### 일반명령어
 * docker ps [-a]
 * docker images
   * docker image inspect --format "{{.Name}},{{.Image}}"
@@ -43,12 +43,43 @@ docker ps
 * docker run --cpu-share=512 --memory=1g
 * docker logs [container id]
 
-### 일반사용자 환경설정
+-----
+## 도커작성
+
+### 도커화일 (KST설정)
+```
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Seoul
+RUN apt-get update
+RUN apt-get install tzdata
+RUN apt-get install -y vim git curl net-tools iputils-ping
+RUN apt-get -y install python3.8 python3-pip
+RUN pip3 install flask flask_cors flask_restx
+```
+### 도커화일 (User:Group)
+```
+RUN mkdir /content
+RUN chmod 777 /content
+
+RUN addgroup --gid 1001 jjy
+RUN useradd -rm -d /home/jjy -s /bin/bash -g 1001 -G sudo -u 1001 jjy
+USER jjy
+
+WORKDIR /content
+```
+
+
+### 환경설정
 ```
 sudo usermod -aG docker $USER
 visudo
 ```
 * visudo : root 권한부여
+* dns 안될경우, 특히 apt-update 않될때.
+```
+docker build --network=host -t div/uhome:0.1 .  
+호스트 쪽의 dns를 사용하도록 한다.  
+```
 
 <details>
     <summary>자세히</summary>
@@ -60,11 +91,7 @@ visudo
 
 </details>
 
-* dns 안될경우, 특히 apt-update 않될때.
-```
-docker build --network=host -t div/uhome:0.1 .  
-호스트 쪽의 dns를 사용하도록 한다.  
-```
+
 
 
 
@@ -98,27 +125,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 
 
-### 도커화일 (KST설정)
-```
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Seoul
-RUN apt-get update
-RUN apt-get install tzdata
-RUN apt-get install -y vim git curl net-tools iputils-ping
-RUN apt-get -y install python3.8 python3-pip
-RUN pip3 install flask flask_cors flask_restx
-```
-### 도커화일 (User:Group)
-```
-RUN mkdir /content
-RUN chmod 777 /content
 
-RUN addgroup --gid 1001 jjy
-RUN useradd -rm -d /home/jjy -s /bin/bash -g 1001 -G sudo -u 1001 jjy
-USER jjy
-
-WORKDIR /content
-```
 
 ## 도커예제
 
