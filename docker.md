@@ -53,7 +53,10 @@ visudo
 <details>
     <summary>자세히</summary>
 
-<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+원래는 docker conatiner 내에서 nvidia GPU를 사용하기 위해 nvidia-docker 혹은 nvidia-docker2를 따로 설치해줘야했다. 하지만 docker 19.03 버전부터는 docker 자체적으로 nvidia GPU를 지원하고 nvidia-docker는 사용하지 않는다.
+* docker run ... --gpus "device=1,2,3" ...
+* docker run ... --gpus all ... 
+* 
 
 </details>
 
@@ -63,10 +66,7 @@ docker build --network=host -t div/uhome:0.1 .
 호스트 쪽의 dns를 사용하도록 한다.  
 ```
 
-원래는 docker conatiner 내에서 nvidia GPU를 사용하기 위해 nvidia-docker 혹은 nvidia-docker2를 따로 설치해줘야했다. 하지만 docker 19.03 버전부터는 docker 자체적으로 nvidia GPU를 지원하고 nvidia-docker는 사용하지 않는다.
-* docker run ... --gpus "device=1,2,3" ...
-* docker run ... --gpus all ... 
-* 
+
 
 # Official Docker docs.
 
