@@ -8,19 +8,22 @@ docker run --gpus all -it -p 8888:8888 -p 6006:6006 --ipc=host -v $(pwd):/worksp
 docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너이름)
 -p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
 ```
-* --user : 사용자지정 
-  * 도커내부에서 사용자등록과 그룹등록이 되어야 사용가능
-* --name : 컨테이너이름지정
 * --rm : 컨테이너사용종료시 자원을 즉시회수함.
-* --ipc=host : 파이토치등을 사용할때, sharedmemory를 이용하여 데이타를 교환하나, 도커내의 자원을 부족하므로 호스트사용
-* --gpu all : gpu 사용여부 https://docs.docker.com/compose/gpu-support/ https://conservatory.tistory.com/12
-  * docker run --gpus '"count=1"' [container_name]  
-  * docker run --gpus '"device=0"' [container_name]
-  * docker run --gpus '"device=0,1"' [container_name]
 * -it : 터미널 사용
 * -v : 디렉토리연결 (외부:내부)
 * -p : 포트연결 (외부:내부)
+* --user : 사용자지정 
+  * 도커내부에서 사용자등록과 그룹등록이 되어야 사용가능
+* --name : 컨테이너이름지정
+* --ipc=host : 파이토치등을 사용할때, sharedmemory를 이용하여 데이타를 교환하나, 도커내의 자원을 부족하므로 호스트사용
+* --gpu all : gpu 사용여부 
+  * docker run --gpus '"count=1"' [container_name]  
+  * docker run --gpus '"device=0"' [container_name]
+  * docker run --gpus '"device=0,1"' [container_name]
+  * https://docs.docker.com/compose/gpu-support/ 
+  * https://conservatory.tistory.com/12
 * --network=host : host 컴퓨터의 네트워크를 사용한다.
+* 
 ```
 docker build --network=host -t div/sus:0.1 .
 docker run --rm -it --hostname _docker --name div_sus_001 div/sus:0.1 
