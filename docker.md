@@ -4,7 +4,7 @@
 
 https://github.com/DongilVision/DevOps/blob/main/README.md
 
-$.engines["vscode"]
+($.engines["vscode"])
 
 
 
