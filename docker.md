@@ -1,16 +1,6 @@
 
 ![header](https://capsule-render.vercel.app/api?type=rect&color=auto&height=100&section=header&text=Docker%20Manual&fontSize=50)
 
-
-https://github.com/DongilVision/DevOps/blob/main/README.md
-
-($.engines["vscode"])
-_Dash badge_
-
-[![GO - README](https://img.shields.io/badge/GO-README-2ea44f)](https://github.com/DongilVision/DevOps/blob/main/README.md)
-
-_Query parameter badge_
-
 [![GO - README](https://img.shields.io/static/v1?label=GO&message=README&color=2ea44f)](https://github.com/DongilVision/DevOps/blob/main/README.md)
 
 
