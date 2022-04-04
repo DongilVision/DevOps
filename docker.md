@@ -23,7 +23,6 @@ docker run --rm -it --user jjy:jjy --name div_user_001
   * https://docs.docker.com/compose/gpu-support/ 
   * https://conservatory.tistory.com/12
 * --network=host : host 컴퓨터의 네트워크를 사용한다.
-
 ```
 docker build --network=host -t div/sus:0.1 .
 docker run --rm -it --hostname _docker --name div_sus_001 div/sus:0.1 
@@ -31,6 +30,24 @@ docker run --rm -it --user jjy:jjy --hostname _docker --name div_user_001 -p 801
        -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/sus:0.1 
 docker ps
 ```
+### 도커명령어
+* docker ps [-a]
+* docker images
+  * docker image inspect --format "{{.Name}},{{.Image}}"
+* docker attach [contained id]
+* docker stop | rm | kill 
+* docker -v
+* docker rm -f
+* docker run --cpu-share=512 --memory=1g
+* docker logs [container id]
+
+### 일반사용자 환경설정
+```
+sudo usermod -aG docker $USER
+visudo
+```
+* visudo : root 권한부여
+
 
 * dns 안될경우, 특히 apt-update 않될때.
 ```
@@ -70,11 +87,7 @@ apt-get install docker-ce docker-ce-cli containerd.io
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-## 일반사용자 환경설정
-```
-sudo usermod -aG docker $USER
-visudo
-```
+
 
 
 ### 도커화일 (KST설정)
