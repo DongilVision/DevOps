@@ -2,23 +2,25 @@ https://github.com/DongilVision/DevOps/blob/main/README.md
 
 ## 도커 빌드 및 실행
 
-### 도커실행명령어
+### 실행명령어
 ```
 docker run --gpus all -it -p 8888:8888 -p 6006:6006 --ipc=host -v $(pwd):/workspace hello:1.0 /bin/bash
 docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너이름)
 -p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
 ```
 * --user : 사용자지정 
-       * 도커내부에서 사용자등록과 그룹등록이 되어야 사용가능
+  * 도커내부에서 사용자등록과 그룹등록이 되어야 사용가능
 * --name : 컨테이너이름지정
 * --rm : 컨테이너사용종료시 자원을 즉시회수함.
-* --gpu all : gpu 사용여부 https://docs.docker.com/compose/gpu-support/
+* --ipc=host : 파이토치등을 사용할때, sharedmemory를 이용하여 데이타를 교환하나, 도커내의 자원을 부족하므로 호스트사용
+* --gpu all : gpu 사용여부 https://docs.docker.com/compose/gpu-support/ https://conservatory.tistory.com/12
   * docker run --gpus '"count=1"' [container_name]  
   * docker run --gpus '"device=0"' [container_name]
   * docker run --gpus '"device=0,1"' [container_name]
 * -it : 터미널 사용
-* -p : 포트연결 (외부:내부)
 * -v : 디렉토리연결 (외부:내부)
+* -p : 포트연결 (외부:내부)
+* --network=host : host 컴퓨터의 네트워크를 사용한다.
 ```
 docker build --network=host -t div/sus:0.1 .
 docker run --rm -it --hostname _docker --name div_sus_001 div/sus:0.1 
@@ -36,7 +38,7 @@ docker build --network=host -t div/uhome:0.1 .
 원래는 docker conatiner 내에서 nvidia GPU를 사용하기 위해 nvidia-docker 혹은 nvidia-docker2를 따로 설치해줘야했다. 하지만 docker 19.03 버전부터는 docker 자체적으로 nvidia GPU를 지원하고 nvidia-docker는 사용하지 않는다.
 * docker run ... --gpus "device=1,2,3" ...
 * docker run ... --gpus all ... 
-* https://conservatory.tistory.com/12
+* 
 
 # Official Docker docs.
 
