@@ -13,8 +13,8 @@ docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너�
 * --name : 컨테이너이름지정
 * --rm : 컨테이너사용종료시 자원을 즉시회수함.
 * --gpu all : gpu 사용여부  
-      * docker run --gpus '"device=0"' [container_name]
-      * docker run --gpus '"device=0,1"' [container_name]
+  * docker run --gpus '"device=0"' [container_name]
+  * docker run --gpus '"device=0,1"' [container_name]
 * -it : 터미널 사용
 * -p : 포트연결 (외부:내부)
 * -v : 디렉토리연결 (외부:내부)
