@@ -5,8 +5,8 @@ https://github.com/DongilVision/DevOps/blob/main/README.md
 ### 실행명령어
 ```
 docker run --gpus all -it -p 8888:8888 -p 6006:6006 --ipc=host -v $(pwd):/workspace hello:1.0 /bin/bash
-docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너이름)
--p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
+docker run --rm -it --user jjy:jjy --name div_user_001 
+           -p 8011:8080 -v `pwd`:/content -v /NAS2/USER-001:/content/storage div/uhome:0.1 
 ```
 * --rm : 컨테이너사용종료시 자원을 즉시회수함.
 * -it : 터미널 사용
@@ -23,7 +23,7 @@ docker run --rm -it --user jjy:jjy --name div_user_001 (권한 및 컨테이너�
   * https://docs.docker.com/compose/gpu-support/ 
   * https://conservatory.tistory.com/12
 * --network=host : host 컴퓨터의 네트워크를 사용한다.
-* 
+
 ```
 docker build --network=host -t div/sus:0.1 .
 docker run --rm -it --hostname _docker --name div_sus_001 div/sus:0.1 
