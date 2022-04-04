@@ -50,6 +50,12 @@ visudo
 ```
 * visudo : root 권한부여
 
+<details>
+    <summary>자세히</summary>
+
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+
+</details>
 
 * dns 안될경우, 특히 apt-update 않될때.
 ```
