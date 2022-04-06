@@ -51,20 +51,22 @@ docker ps
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Seoul
 RUN apt-get update
-RUN apt-get install tzdata
-RUN apt-get install -y vim git curl net-tools iputils-ping
-RUN apt-get -y install python3.8 python3-pip
-RUN pip3 install flask flask_cors flask_restx
+RUN apt-get install -y tzdata
+RUN apt-get install -y net-tools iputils-ping dnsutils
+RUN apt-get install -y vim git curl wget sudo 
+# RUN apt-get install -y python3.8 python3-pip
+# RUN pip3 install flask flask_cors flask_restx
 ```
 ### 도커화일 (User:Group)
 ```
+# --------------------------------------------------------------
+# `pwd` 사용할때는 반드시 계정일치 필요
+# --------------------------------------------------------------
 RUN mkdir /content
-RUN chmod 777 /content
-
+RUN sudo chmod 777 /content
 RUN addgroup --gid 1001 jjy
 RUN useradd -rm -d /home/jjy -s /bin/bash -g 1001 -G sudo -u 1001 jjy
 USER jjy
-
 WORKDIR /content
 ```
 
