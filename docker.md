@@ -72,9 +72,13 @@ USER jjy
 WORKDIR /content
 ```
 ```
+# --------------------------------------------------------------
+# `pwd` 사용할때는 반드시 계정일치 필요
+# --------------------------------------------------------------
 RUN mkdir /content
 RUN chmod 777 /content
 
+RUN echo 'root:1234' | chpasswd
 ARG USER
 RUN echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER} && \
     chmod 0440 /etc/sudoers.d/${USER}
