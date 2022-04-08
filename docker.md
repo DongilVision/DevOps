@@ -58,19 +58,33 @@ RUN apt-get install -y vim git curl wget sudo
 # RUN pip3 install flask flask_cors flask_restx
 ```
 ### 도커화일 (User:Group)
+* su, sudo 가능 확인
 ```
 # --------------------------------------------------------------
 # `pwd` 사용할때는 반드시 계정일치 필요
 # --------------------------------------------------------------
 RUN mkdir /content
-RUN sudo chmod 777 /content
+RUN chmod 777 /content
+
 RUN addgroup --gid 1001 jjy
 RUN useradd -rm -d /home/jjy -s /bin/bash -g 1001 -G sudo -u 1001 jjy
 USER jjy
 WORKDIR /content
 ```
+```
+RUN mkdir /content
+RUN chmod 777 /content
 
-
+ARG USER
+RUN echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER} && \
+    chmod 0440 /etc/sudoers.d/${USER}
+# Set the arguments for host_id and user_id to be able to save the build artifacts
+# outside the container, on host directories, as docker volumes.
+ARG host_uid host_gid
+RUN groupadd -g $host_gid nxp && \
+    useradd -g $host_gid -m -s /bin/bash -u $host_uid $USER
+USER $USER
+```
 ### 환경설정
 ```
 sudo usermod -aG docker $USER
