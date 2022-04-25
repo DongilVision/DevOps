@@ -111,9 +111,20 @@ docker build --network=host -t div/uhome:0.1 .
 
 </details>
 
+### Docker 내에서 Docker 제어방법
+* 기본적으로 -v /var/run/docker.sock:/var/run/docker.sock 사용
+* pip3 install docker
+* https://recordsoflife.tistory.com/635
+* https://docs.docker.com/engine/api/sdk/examples/
+* https://docs.docker.com/engine/api/
 
-
-
+```
+docker run -it --network=host -v /var/run/docker.sock:/var/run/docker.sock alpine
+apk add curl && apk add jq
+curl -s --unix-socket /var/run/docker.sock http://dummy/containers/json | jq '.'
+curl --unix-socket /var/run/docker.sock http://localhost/events
+curl -XPOST --unix-socket /var/run/docker.sock -d '{"Image":"ubuntu", "Name":"MyJOB"}' -H 'Content-Type: application/json' http://localhost/containers/create
+```
 
 # Official Docker docs.
 
