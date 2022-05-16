@@ -1,3 +1,17 @@
+
+### Key 설정방법
+<app dir>/android/app/build.gradle
+<app dir>/android/key.properties
+ https://flutter-ko.dev/docs/deployment/android
+ key는 android studio에서 만든다.
+ 
+### Bundle 빌드
+
+flutter clean
+flutter build appbundle -release -debug
+
+
+
 https://youtu.be/3Ck42C2ZCb8 (동영상 : Dart 기본)
 
 # function parameter
