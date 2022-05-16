@@ -161,3 +161,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 ## 도커예제
 
 * https://github.com/facebookresearch/detectron2/blob/main/docker/Dockerfile
+* 도커구조.
+* https://bluese05.tistory.com/53
+
