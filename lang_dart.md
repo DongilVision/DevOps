@@ -23,12 +23,17 @@ import 'package:flutter_beep/flutter_beep.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_blue/flutter_blue.dart';
  ```
-* 
+* AndroidManifest.xml ( android/app/src/main/ )
+```
+<uses-permission android:name="android.permission.CAMERA"/>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.BLUETOOTH"/>
+```
 ### Bundle 빌드
-
+```
 flutter clean
 flutter build appbundle -release -debug
-
+```
 
 
 https://youtu.be/3Ck42C2ZCb8 (동영상 : Dart 기본)
