@@ -1,10 +1,29 @@
 
 ### Key 설정방법
-<app dir>/android/app/build.gradle
-<app dir>/android/key.properties
- https://flutter-ko.dev/docs/deployment/android
- key는 android studio에서 만든다.
- 
+* <app dir>/android/app/build.gradle
+* <app dir>/android/key.properties
+*  https://flutter-ko.dev/docs/deployment/android
+*  key는 android studio에서 만든다.
+
+### 라이브러리 사용 및 권한
+* pubspec.yaml (라이브러리등록)
+ ```
+ dependencies:
+  flutter:
+    sdk: flutter
+  camera: 0.9.4+21
+  http: 0.13.4
+  connectivity: ^3.0.6
+  flutter_beep: 1.0.0
+  audioplayers: ^0.20.1
+  flutter_blue: ^0.8.0
+ ```
+ ```
+import 'package:flutter_beep/flutter_beep.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_blue/flutter_blue.dart';
+ ```
+* 
 ### Bundle 빌드
 
 flutter clean
