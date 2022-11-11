@@ -27,7 +27,7 @@
 
 # GRBL 설정 및 명령어
 
-![image](https://user-images.githubusercontent.com/29625147/201328051-f8b520b6-5fb3-4468-ba4f-e45c250e1906.png)
+http://pusanbear.blogspot.com/2019/02/cnc-6-grbl-v11.html
 
 # 기타
 알리익스프레스 판매
