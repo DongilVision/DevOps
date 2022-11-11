@@ -28,7 +28,7 @@
 ![image](https://user-images.githubusercontent.com/29625147/201327335-2a0d9dc1-460d-4405-abeb-86f40db82ccf.png)
 
 # GRBL 설정 및 명령어
-
+http://john-home.iptime.org:8085/xe/index.php?mid=board_stpO94&document_srl=1188
 http://pusanbear.blogspot.com/2019/02/cnc-6-grbl-v11.html
 
 # 기타
