@@ -15,6 +15,8 @@
 
 ![image](https://user-images.githubusercontent.com/29625147/201325135-04eb8312-9979-4858-a65e-3bc5d6f2d264.png)
 
+![image](https://user-images.githubusercontent.com/29625147/201329552-cdad6e1c-1446-4541-a9fa-7fa4469bce4d.png)
+
 # 리미트스위치 (광방식)
 
 ![image](https://user-images.githubusercontent.com/29625147/201325714-50bff3e4-0a96-4a48-b007-9078f142be03.png)
