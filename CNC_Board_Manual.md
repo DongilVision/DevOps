@@ -11,6 +11,9 @@
 
 ![image](https://user-images.githubusercontent.com/29625147/201324037-2cd8bd65-1008-4fc1-877f-5f13cc32108e.png)
 
+# 모터 / 파워 연결
+
+![image](https://user-images.githubusercontent.com/29625147/201325135-04eb8312-9979-4858-a65e-3bc5d6f2d264.png)
 
 # 기타
 알리익스프레스 판매
