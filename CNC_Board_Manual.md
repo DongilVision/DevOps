@@ -25,6 +25,10 @@
 
 ![image](https://user-images.githubusercontent.com/29625147/201327335-2a0d9dc1-460d-4405-abeb-86f40db82ccf.png)
 
+# GRBL 설정 및 명령어
+
+![image](https://user-images.githubusercontent.com/29625147/201328051-f8b520b6-5fb3-4468-ba4f-e45c250e1906.png)
+
 # 기타
 알리익스프레스 판매
 https://ko.aliexpress.com/item/1005004358076639.html?pdp_npi=2%40dis%21USD%21US%20%2499.50%21US%20%2448.75%21%21%21%21%21%4021032fa416681566289214699e9150%2112000028891177986%21btf&_t=pvid%3A4b207df9-f4df-4101-9fbb-45c73c11214e&afTraceInfo=1005004358076639__pc__pcBridgePPC__xxxxxx__1668156629&gatewayAdapt=glo2kor
