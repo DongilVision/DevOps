@@ -15,6 +15,12 @@
 
 ![image](https://user-images.githubusercontent.com/29625147/201325135-04eb8312-9979-4858-a65e-3bc5d6f2d264.png)
 
+# 리미트스위치 (광방식)
+
+![image](https://user-images.githubusercontent.com/29625147/201325714-50bff3e4-0a96-4a48-b007-9078f142be03.png)
+
+![image](https://user-images.githubusercontent.com/29625147/201326800-6f9fa15f-d5a4-4c12-8662-199242009f71.png)
+
 # 기타
 알리익스프레스 판매
 https://ko.aliexpress.com/item/1005004358076639.html?pdp_npi=2%40dis%21USD%21US%20%2499.50%21US%20%2448.75%21%21%21%21%21%4021032fa416681566289214699e9150%2112000028891177986%21btf&_t=pvid%3A4b207df9-f4df-4101-9fbb-45c73c11214e&afTraceInfo=1005004358076639__pc__pcBridgePPC__xxxxxx__1668156629&gatewayAdapt=glo2kor
