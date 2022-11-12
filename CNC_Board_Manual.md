@@ -30,6 +30,10 @@
 # GRBL 설정 및 명령어
 http://john-home.iptime.org:8085/xe/index.php?mid=board_stpO94&document_srl=1188
 http://pusanbear.blogspot.com/2019/02/cnc-6-grbl-v11.html
+### GITHUB
+https://github.com/gnea/grbl
+https://github.com/gerritv/Grbl-Panel
+![image](https://user-images.githubusercontent.com/29625147/201475862-191781df-df32-4cf9-8e7a-a3d3d7b425f5.png)
 
 # 기타
 알리익스프레스 판매
