@@ -38,6 +38,8 @@ http://pusanbear.blogspot.com/2019/02/cnc-6-grbl-v11.html
 ### GITHUB
 https://github.com/gnea/grbl
 https://github.com/gerritv/Grbl-Panel
+## GRBL 제어패널 다운로드
+https://github.com/gerritv/Grbl-Panel/releases/tag/1.0.9.18
 ![image](https://user-images.githubusercontent.com/29625147/201475862-191781df-df32-4cf9-8e7a-a3d3d7b425f5.png)
 
 # 기타
