@@ -1,8 +1,49 @@
 https://github.com/DongilVision/DevOps/blob/main/README.md
 
-### 자료형
 
-### 레이아웃
+* 클래스생성자는 파라메터를 가지지 않는다.
+* 상태변수를 이용하여 최대한 외부제어를 간단히 한다.
+* 스트링 포메팅
+
+### 1. 자료형
+* 인터페이스 선언
+```C#
+    public static Dictionary<string, TabItem> Tab 
+        = new Dictionary<string, TabItem>();
+    class PhotoList : List<Photo>
+    {
+    }
+    class Photo{
+
+    }
+    public interface GraphBox {
+        (int,int)   GetRange();
+    }
+
+    public enum Bound
+    {
+        MAX,
+        MIN
+    }
+    
+    public int max {
+        get{}
+        set{}
+    }
+```
+* 객체조건
+```C#
+// State 필드
+// 이벤트핸들러
+public delegate void StateEventHandler(object sender, bool TChecked);
+ublic event StateEventHandler StateChange;
+Dispose();
+Clone();
+Save();
+Load();
+  
+```
+### 2. 레이아웃
 ### 컴포넌트
 ### 메뉴시스템
 ---
