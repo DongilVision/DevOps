@@ -1,3 +1,13 @@
+# Redmine Install
+* 공식사이트 이용
+* https://hub.docker.com/_/redmine
+* db를 먼저 Install하고 , Redmine을 설치한다.
+* https://c804c131bc30.gitbooks.io/redmine/content/chapter1.html
+
+### 설정
+개발종류
+사용자
+역활
 
 ```
 version: '3.7'
