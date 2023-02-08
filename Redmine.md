@@ -13,7 +13,7 @@ WSL에 설치 (23.2.8)
 apt update
 apt install nfs-common
 mount -t nfs 192.168.2.55:/vol2 /NAS2
-http://172.25.33.236:53000/projects : 도커주소로 접속된다.
+http://172.25.33.236:53000/projects : 도커주소로 접속된다.(기동시 변경되니 주의바람)
 ```
 ```
 version: '3.7'
