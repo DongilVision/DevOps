@@ -4,6 +4,13 @@
 * db를 먼저 Install하고 , Redmine을 설치한다.
 * https://c804c131bc30.gitbooks.io/redmine/content/chapter1.html
 
+#NAS연결
+* http://172.25.33.236:53000/projects
+* NFS4 설치
+* https://ssup2.github.io/record/NFSv4_Server_%EC%84%A4%EC%B9%98_Ubuntu_16.04/
+* Broken PIP *** (apt꼬인문제 해결)
+* https://maengdev.tistory.com/25
+
 ### 설정
 개발종류
 사용자
