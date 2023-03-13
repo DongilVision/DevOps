@@ -8,7 +8,7 @@
 * 계정: root:dongilxxxx (설립연도)
 * 실제위치: /NAS2/docker_maria_db
 * 설정화일
-  * cd /home/jjy/project/DIV_Platform/
+  * cd /home/jjy/project/DIV_Platform/busan
   * compose.yml 참고.
     * /NAS2/docker_maria_db:/var/lib/mysql
     * ./docker_mysql/my.conf:/usr/local/etc/my.cnf
