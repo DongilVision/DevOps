@@ -7,6 +7,18 @@
 * https://youtu.be/1QmOMGWLpsk (농업)  
 * https://youtu.be/9j-Bjl2bTvA (물류)  
 
+# TWIM  
+* 표준체계(2020)  
+* https://youtu.be/BFS_at_eut8  
+* 2차전지 검사기(2023)  
+* https://youtu.be/x24Dnxbhvzc  
+* 캔검사 AI 로봇 (2020)  
+* https://youtu.be/XCC1-ooJX84  
+* 로봇 비전검사 (2020)  
+* https://youtu.be/wmaWiv7KoPc  
+* 승강기 자동화 솔루션 (2020)  
+* https://youtu.be/2H17TSnqpOQ  
+
 # 모던AI  
 * 사출물검사
 * https://youtu.be/lLRDgg2EjQQ  
