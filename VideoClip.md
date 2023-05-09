@@ -21,6 +21,15 @@
 * https://youtu.be/Piq0zVlkzWc  
 * https://youtu.be/OJHkktP-Qi4  
 
+# 농심엔지니어링  
+* https://youtu.be/h_tYbm_sSGs  
+* https://youtu.be/tQNrX0cQSVU  
+* https://youtu.be/zalEH-ass5s  
+* https://youtu.be/ECOq-hgKt_0  
+* https://youtu.be/TNO7lJZJhrM  
+* https://youtu.be/GKCY5hgj_II  
+* https://youtu.be/N6pe7x0ycJ4  
+
 # 비즈데이타  
 * AI 카운트 모듈
 * https://youtu.be/uEllHjegDr8  
