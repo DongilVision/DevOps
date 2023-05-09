@@ -1,18 +1,21 @@
 # 라온피플 AI toolkit
 https://youtu.be/jJCrQi-1FFE  
 
-# 지상이동형 모니터링 모듈
+### [라온피플] AI 농업진출
+* 지상이동형 모니터링 모듈
 https://youtu.be/1mdbNKGV3Go (농업)  
 https://youtu.be/1QmOMGWLpsk (농업)  
 https://youtu.be/9j-Bjl2bTvA (물류)  
 
 # 모던AI
+* 사출물검사
 https://youtu.be/lLRDgg2EjQQ  
 https://youtu.be/KIfAU98O1UQ  
 https://youtu.be/Piq0zVlkzWc  
 https://youtu.be/OJHkktP-Qi4  
 
 # 비즈데이타
+* AI 카운트 모듈
 https://youtu.be/uEllHjegDr8  
 
 # GRIT ( 농업)
