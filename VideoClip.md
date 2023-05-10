@@ -69,3 +69,11 @@
 
 # 저사양 Edge 기기  
 * https://youtu.be/bd3L-VMP0mo  
+
+
+# PCB패턴검사
+* https://youtu.be/jvx4_2ubcWc
+* S전자 PCB검사
+* https://youtu.be/lNMNRSVV6Xw
+* 레인보우 로봇 사용예
+* https://youtu.be/UxxnzTb4zQs
