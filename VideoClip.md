@@ -1,3 +1,12 @@
+# 이차전지부분
+* SFA : 비전및 X-Ray CT를 통하여 천억이상의 수주를 함.
+* 최초 개발은 GE의 기술임.
+### 이차전지 선도기업 / SFA / 500억 수주 (2022) X-RAY 3D Scan
+* https://youtu.be/-QQmswKpudY
+* https://youtu.be/ddy4s_kltK0
+### 웨이게이트 (GE)
+* https://youtu.be/9wM9ZbDD_EU
+
 # 라온피플 AI toolkit
 * https://youtu.be/jJCrQi-1FFE  
 
