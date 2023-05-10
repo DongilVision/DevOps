@@ -40,8 +40,23 @@
 # MTN AI 머신비전 클라우드  
 * 현재자동차 분사회사 https://youtu.be/Q7tuuBZC3Dg  
 
-# 지능형 AI Vision 로봇  
+# 로봇
+
+* 지능형 AI Vision 로봇  
 * https://youtu.be/SHp8F40K_cI  
+
+* 물류로봇
+* https://youtu.be/R0CB1NUU3bE
+* 조리로봇
+* https://youtu.be/kekj9W0ubeM
+* 테슬라 로봇 (옵티머스)
+* https://youtu.be/yCr1cVn6yRk
+
+# 다리소프트
+* https://youtu.be/pu7-z9qIgxo
+* https://youtu.be/cP8XJeX98j0
+* https://youtu.be/weMjD_KOoIk
+* https://youtu.be/0qZfTIY8u2M
 
 # 저사양 Edge 기기  
 * https://youtu.be/bd3L-VMP0mo  
