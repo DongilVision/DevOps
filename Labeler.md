@@ -7,13 +7,14 @@
 ### 전략
 * 기본적인 Benchmark 는 Roboflow의 라벨링을 기본으로 한다.
 * WPF 플랫폼을 이용하여 빠르게 수행될 수 있도록 개발되어야 한다.
+* https://app.roboflow.com/
+![image](https://github.com/DongilVision/DevOps/assets/29625147/4283cce0-f039-44a6-8c6d-cadad40360d2)
 
 ### 용어
 * Image : 이미지데이타 화일
 * 프로젝트 화일 : 프로제트의 정보가 포함된 화일
 * 데이타셋 : 이미지, 클래스, 라벨 정보가 포함된 하나의 묶음을 의미한다.
 
-![image](https://github.com/DongilVision/DevOps/assets/29625147/4283cce0-f039-44a6-8c6d-cadad40360d2)
 
 수요일 업무 분담
 
