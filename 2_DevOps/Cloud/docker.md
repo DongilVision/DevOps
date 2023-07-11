@@ -4,6 +4,33 @@
 [![GO - README](https://img.shields.io/static/v1?label=GO&message=README&color=2ea44f)](https://github.com/DongilVision/DevOps/blob/main/README.md)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FDongilVision%2FDevOps%2Fblob%2Fmain%2Fdocker.md&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
+## 도커 완전제거
+apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli
+apt-get autoremove -y --purge docker-engine docker docker.io docker-ce
+rm -rf /var/lib/docker /etc/docker
+rm /etc/apparmor.d/docker
+groupdel docker
+rm -rf /var/run/docker.sock
+
+## 도커 설치방법
+https://docs.docker.com/engine/install/ubuntu/ (공식페이지)
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get update
+sudo apt-get -y install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+docker --version
+
 ### 실행명령어
 ```
 docker run --gpus all -it -p 8888:8888 -p 6006:6006 --ipc=host -v $(pwd):/workspace hello:1.0 /bin/bash
