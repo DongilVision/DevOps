@@ -59,14 +59,14 @@ Cv2.Threshold(gray, binary, 150, 255, ThresholdTypes.Binary);
 
 |속성|설명|예시|
 |---|---|---|
-**ThresholdTypes.Binary**|val > thresh => maxval / else => 0|![](./img/11/binary.png)
-**ThresholdTypes.BinaryInv**| val > thresh => 0 / else => maxval|![](./img/11/binaryinv.png)
-**ThresholdTypes.Trunc**|val > thresh => thresh / else => NOTHING|![](./img/11/trunc.png)
-**ThresholdTypes.Tozero**|val > thresh => NOTHING / else => 0|![](./img/11/tozero.png)
-**ThresholdTypes.TozeroInv**|val > thresh => 0 / else => NOTHING|![](./img/11/tozeroinv.png)
-**ThresholdTypes.Mask**|=> 0 / 검은색 이미지로 변경|![](./img/11/mask.png)
-**ThresholdTypes.Otsu**|Otsu(오츠) 알고리즘 적용(단일 채널 이미지만 적용 가능)|![](./img/11/otsu.png)
-**ThresholdTypes.Triangle**|삼각형 알고리즘 적용(단일 채널 이미지만 적용 가능)|![](./img/11/triangle.png)
+**ThresholdTypes.Binary** |val > thresh => maxval / else => 0|![](./img/11/binary.png)
+**ThresholdTypes.BinaryInv** | val > thresh => 0 / else => maxval|![](./img/11/binaryinv.png)
+**ThresholdTypes.Trunc** |val > thresh => thresh / else => NOTHING|![](./img/11/trunc.png)
+**ThresholdTypes.Tozero** |val > thresh => NOTHING / else => 0|![](./img/11/tozero.png)
+**ThresholdTypes.TozeroInv** |val > thresh => 0 / else => NOTHING|![](./img/11/tozeroinv.png)
+**ThresholdTypes.Mask** |=> 0 / 검은색 이미지로 변경|![](./img/11/mask.png)
+**ThresholdTypes.Otsu** |Otsu(오츠) 알고리즘 적용(단일 채널 이미지만 적용 가능)|![](./img/11/otsu.png)
+**ThresholdTypes.Triangle** |삼각형 알고리즘 적용(단일 채널 이미지만 적용 가능)|![](./img/11/triangle.png)
 
 ### **실행 결과**
 
