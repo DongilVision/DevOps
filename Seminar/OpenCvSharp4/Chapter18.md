@@ -11,6 +11,10 @@ OpenCvSharp에서는 검출된 윤곽선의 형상을 **분석 및 재가공**�
 
 예제 이미지는 17장과 동일하며, 코드 또한 17장의 코드에서 시작
 
+> 원본 이미지: hex.jpg
+
+![](./img/18/0.png)
+
 ```cs
 using System;
 using OpenCvSharp;
@@ -95,5 +99,78 @@ RotatedRect rotatedRect = Cv2.MinAreaRect(p);
 
 최소 면적 사각형 함수 `Cv2.MinAreaRect()`는 윤곽선의 경계면을 둘러싸는 **최소 크기의 사각형**을 계산한다.
 
-\* `Cv2.BoundingRect()`와 `Cv2.MinAreaRect()` 모두 주어진 객체 또는 윤곽선을 감싸는 최소 크기의 사각형을 계산하는 데 사용되나, `Cv2.BoundingRect()`는 최소 크기의 **수직 사각형**을 반환하고, `Cv2.MainAreaRect()`는 **수직 사각형**이 아닌 **회전된 사각형(RotatedRect)**을 반환한다는 차이점이 있다.
+\* `Cv2.BoundingRect()`와 `Cv2.MinAreaRect()` 모두 주어진 객체 또는 윤곽선을 감싸는 최소 크기의 사각형을 계산하는 데 사용되나, `Cv2.BoundingRect()`는 최소 크기의 **수직 사각형**을 반환하고, `Cv2.MainAreaRect()`는 **수직 사각형**이 아닌 **회전된 사각형(RotatedRect)** 을 반환한다는 차이점이 있다.
 
+#### **18.1.2.5. 타원 피팅 함수**
+```cs
+// Cv2.FitEllipse() return type: RotatedRect
+RotatedRect ellipse = Cv2.FitEllipse(p);
+```
+타원 피팅 함수 `Cv2.FitEllipse(p)`는 윤곽선에 가장 근사한 원을 계산한다. **타원 형태** 를 가질 수 있으므로 `RotatedRect` 형태를 갖는다.
+
+\* **RotatedRect** Type으로 기록된 데이터는 출력 시 `사각형`, 혹은 `타원형`으로 표시할 수 있다.
+
+
+#### **18.1.2.6. 최소 면적 원 함수**
+```cs
+Point2f center; // 중심점
+float radius;   // 반지름
+
+Cv2.MinEnclosingCircle(p, out center, out radius);
+```
+
+최소 크기 원 함수 `Cv2.MinEnclosingCircle()`은 윤곽선에 **최소 크기의 원**을 계산한다. 
+
+해당 함수는 `out` 키워드를 활용하여 중심점(center)과, 반지름(radius)를 반환한다.
+
+#### **18.1.2.7. 그리기**
+```cs
+// Cv2.DrawContours(dst, new_contours, -1, new Scalar(255, 0, 0), 2, LineTypes.AntiAlias, null, 1); 삭제
+```
+
+> boundingRect 그리기
+
+```cs
+Cv2.Rectangle(dst, boundingRect, Scalar.Red, 2);
+```
+
+![](./img/19/../18/boundingrect.png)
+
+> rotatedRect 그리기
+
+```cs
+// 직사각형으로 그리기
+Point2f[] rotatedRectPoints = rotatedRect.Points();
+for(int i = 0; i < rotatedRectPoints.Length; i++) {
+    if(i + 1 == rotatedRectPoints.Length) {
+        Cv2.Line(dst, rotatedRectPoints[i].ToPoint(), rotatedRectPoints[0].ToPoint(), Scalar.Red, 2);
+        break;
+    }
+    Cv2.Line(dst, rotatedRectPoints[i].ToPoint(), rotatedRectPoints[i + 1].ToPoint(), Scalar.Red, 2);
+}
+```
+
+![](./img/19/../18/rotatedrect_rect.png)
+
+```cs
+// 타원으로 그리기
+Cv2.Ellipse(dst, rotatedRect, Scalar.Red, 2);
+```
+
+![](./img/19/../18/rotatedrect_ellipse.png)
+
+> ellipse 그리기
+
+```cs
+Cv2.Ellipse(dst, ellipse, Scalar.Red, 2);
+```
+
+![](./img/19/../18/ellipse.png)
+
+> Circle 그리기
+
+```cs
+Cv2.Circle(dst, (int)center.X, (int)center.Y, (int)radius, Scalar.Red, 2);
+```
+
+![](./img/19/../18/circle.png)
