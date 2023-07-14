@@ -192,6 +192,7 @@ Cv2.DrawContours(dst, new Point[][] { hull }, -1, Scalar.White, 1);
 
 Cv2.Circle(dst, (int)(moments.M10 / moments.M00), (int)(moments.M01 / moments.M00), 5, Scalar.Black, -1);
 ```
+`-1`: 원의 내부를 채움
 
 모멘트는 픽셀 값과 좌표 값의 조합으로 계산되는데, `M_ij`에서의 **i**와 **j**는 이 조합에서 좌표 값의 차수를 나타낸다.
 
