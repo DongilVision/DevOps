@@ -59,10 +59,10 @@ namespace Project {
 #### **18.1.2.1. 윤곽선 면적 함수**
 
 ```cs
-// List<Point[]> new_contours = new List<Point[]>(); 삭제
+/ List<Point[]> new_contours = new List<Point[]>(); 삭제
 foreach(Point[] p in contours) {
     double length = Cv2.ArcLength(p, true);
-    double area = Cv2.ContourArea(p, true); // 추가: 윤곽선 넓이 함수
+    double area = Cv2.ContourArea(p, true); / 추가: 윤곽선 넓이 함수
 
     ...
 }
@@ -73,7 +73,7 @@ foreach(Point[] p in contours) {
 #### **18.1.2.2. 유의미한 정보만 계산**
 
 ```cs
-// if(length > 100) new_contours.Add(Cv2.ApproxPolyDP(p, length * 0.02, true)); 삭제
+/ if(length > 100) new_contours.Add(Cv2.ApproxPolyDP(p, length * 0.02, true)); 삭제
 if(length < 100 && area < 1000 && p.Length < 5) continue;
 ```
 * `length`: 윤곽선의 길이
@@ -85,7 +85,7 @@ if(length < 100 && area < 1000 && p.Length < 5) continue;
 #### **18.1.2.3. 경계 사각형 함수**
 
 ```cs
-// Cv2.BoundingRect() return type: Rect
+/ Cv2.BoundingRect() return type: Rect
 Rect boundingRect = Cv2.BoundingRect(p);
 ```
 윤곽선의 경계면을 둘러싸는 사각형을 계산하는 함수인 `Cv2.BoundingRect(윤곽선 배열)`는 대입된 윤곽선 배열에 대한 **최소 크기의 사각형**을 계산한다.
@@ -93,7 +93,7 @@ Rect boundingRect = Cv2.BoundingRect(p);
 #### **18.1.2.4. 최소 면적 사각형 함수**
 
 ```cs
-// Cv2.MinAreaRect() return type: RotatedRect
+/ Cv2.MinAreaRect() return type: RotatedRect
 RotatedRect rotatedRect = Cv2.MinAreaRect(p);
 ```
 
@@ -103,7 +103,7 @@ RotatedRect rotatedRect = Cv2.MinAreaRect(p);
 
 #### **18.1.2.5. 타원 피팅 함수**
 ```cs
-// Cv2.FitEllipse() return type: RotatedRect
+/ Cv2.FitEllipse() return type: RotatedRect
 RotatedRect ellipse = Cv2.FitEllipse(p);
 ```
 타원 피팅 함수 `Cv2.FitEllipse(p)`는 윤곽선에 가장 근사한 원을 계산한다. **타원 형태** 를 가질 수 있으므로 `RotatedRect` 형태를 갖는다.
@@ -113,8 +113,8 @@ RotatedRect ellipse = Cv2.FitEllipse(p);
 
 #### **18.1.2.6. 최소 면적 원 함수**
 ```cs
-Point2f center; // 중심점
-float radius;   // 반지름
+Point2f center; / 중심점
+float radius;   / 반지름
 
 Cv2.MinEnclosingCircle(p, out center, out radius);
 ```
@@ -125,7 +125,7 @@ Cv2.MinEnclosingCircle(p, out center, out radius);
 
 #### **18.1.2.7. 그리기**
 ```cs
-// Cv2.DrawContours(dst, new_contours, -1, new Scalar(255, 0, 0), 2, LineTypes.AntiAlias, null, 1); 삭제
+/ Cv2.DrawContours(dst, new_contours, -1, new Scalar(255, 0, 0), 2, LineTypes.AntiAlias, null, 1); 삭제
 ```
 
 > boundingRect 그리기
@@ -134,12 +134,12 @@ Cv2.MinEnclosingCircle(p, out center, out radius);
 Cv2.Rectangle(dst, boundingRect, Scalar.Red, 2);
 ```
 
-![](./img/19/../18/boundingrect.png)
+![](./img/18/boundingrect.png)
 
 > rotatedRect 그리기
 
 ```cs
-// 직사각형으로 그리기
+/ 직사각형으로 그리기
 Point2f[] rotatedRectPoints = rotatedRect.Points();
 for(int i = 0; i < rotatedRectPoints.Length; i++) {
     if(i + 1 == rotatedRectPoints.Length) {
@@ -150,14 +150,14 @@ for(int i = 0; i < rotatedRectPoints.Length; i++) {
 }
 ```
 
-![](./img/19/../18/rotatedrect_rect.png)
+![](./img/18/rotatedrect_rect.png)
 
 ```cs
-// 타원으로 그리기
+/ 타원으로 그리기
 Cv2.Ellipse(dst, rotatedRect, Scalar.Red, 2);
 ```
 
-![](./img/19/../18/rotatedrect_ellipse.png)
+![](./img/18/rotatedrect_ellipse.png)
 
 > ellipse 그리기
 
@@ -165,7 +165,7 @@ Cv2.Ellipse(dst, rotatedRect, Scalar.Red, 2);
 Cv2.Ellipse(dst, ellipse, Scalar.Red, 2);
 ```
 
-![](./img/19/../18/ellipse.png)
+![](./img/18/ellipse.png)
 
 > Circle 그리기
 
@@ -173,4 +173,4 @@ Cv2.Ellipse(dst, ellipse, Scalar.Red, 2);
 Cv2.Circle(dst, (int)center.X, (int)center.Y, (int)radius, Scalar.Red, 2);
 ```
 
-![](./img/19/../18/circle.png)
+![](./img/18/circle.png)
