@@ -150,14 +150,14 @@ for(int i = 0; i < rotatedRectPoints.Length; i++) {
 }
 ```
 
-![](./img/18/rotatedrect_rect.png)
+![](./img/18/rotatedRect_rect.png)
 
 ```cs
 // 타원으로 그리기
 Cv2.Ellipse(dst, rotatedRect, Scalar.Red, 2);
 ```
 
-![](./img/18/rotatedrect_ellipse.png)
+![](./img/18/rotatedRect_ellipse.png)
 
 > ellipse 그리기
 
