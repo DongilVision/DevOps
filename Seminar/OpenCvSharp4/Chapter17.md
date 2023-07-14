@@ -23,8 +23,7 @@
 
 ### **17.1.1. 이미지 및 코드**
 
-예제 이미지는 16장과 동일하며, 코드는 16장의 코드에서 시작
-
+예제 이미지는 16장과 동일하며, 코드 또한 16장의 코드에서 시작
 > 원본 이미지: hex.jpg
 
 ![](./img/17/0.png)
@@ -57,7 +56,7 @@ namespace Project {
             Cv2.DrawContours(dst, new_contours, -1, new Scalar(255, 0, 0), 2, LineTypes.AntiAlias, null, 1);    // 윤곽선 그리기
 
             Cv2.ImShow("src", src); // 원본 이미지 src 출력
-            Cv2.ImShow("dst", dst); // 원본 이미지 src 출력
+            Cv2.ImShow("dst", dst); // 출력 이미지 dst 출력
             Cv2.WaitKey(0);
         }
     }
