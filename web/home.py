@@ -32,7 +32,7 @@ if fname != None:
 if st.button("GIT PUSH"):
     x = subprocess.run('/usr/bin/sh ./git_push.sh', shell=True, capture_output=True, text=True)
     #st.write("action push" +x)
-    st.write("RS "+x.stdout)
+    st.write("Result \n"+x.stdout)
 
 
 
