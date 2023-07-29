@@ -2,6 +2,7 @@ import streamlit as st
 import webbrowser
 import os
 import mdv
+import subprocess
  
 #from st_pages import Page, Section, add_page_title, show_pages
 
@@ -27,6 +28,10 @@ if 'md' in param :
 mdv.mdlist(path)
 if fname != None:
     mdv.mdview(fname)
+
+if st.button("GIT PUSH"):
+    x = subprocess.run('/usr/bin/sh ./git_push.sh', shell=True, capture_output=True, text=True)
+    st.write("action push" +x)
 
 
 
