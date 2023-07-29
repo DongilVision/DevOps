@@ -29,10 +29,10 @@ mdv.mdlist(path)
 if fname != None:
     mdv.mdview(fname)
 
-if st.button("GIT PUSH"):
+if st.sidebar.button("GIT PUSH"):
     x = subprocess.run('/usr/bin/sh ./git_push.sh', shell=True, capture_output=True, text=True)
     #st.write("action push" +x)
-    st.write("Result.  "+x.stdout)
+    st.sidebar.write("Result.  "+x.stdout)
 
 
 
