@@ -51,41 +51,53 @@ class Navi:
 
     def parse(self, param):
         (self.path, self.md) = ( '', None ) # 논리구조임.
-   
-        if 'md' in param:
-            self.md = str(param['md'][0])
-            self.path= os.path.dirname(self.md)
-        else :
-            if 'path' in param:
-                self.path = str(param['path'][0])
-                self.md = self.getFirst(self.path)
-            else: 
-                self.md = self.getFirst()
-        if self.path == '/':
-            self.rdir = self.home
-            self.path = ''
+
+        if 'path' in param:
+            self.path = str(param['path'][0])
+            # self.md = self.getFirst(self.path)
         else:
-            self.rdir = self.home+self.path
+            if 'md' in param:
+                self.md = str(param['md'][0])
+                self.path= os.path.dirname(self.md)
+            else :
+                self.path=''
+                # self.md = self.getFirst(self.path)
+        self.rdir = self.home+self.path
+        (dirlist, filelist) = self.getList()
+        if self.md == None and len(filelist)>0:
+            self.md = self.path+'/'+ filelist[0]
         st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
-        
-    
+        st.sidebar.write(filelist)
+
     def getFirst(self, Path=None):
-        if Path == None:
-            self.fpath = self.home
-        else:
-            self.fpath = self.home+Path
-        return self.fpath
+        self.rdir = self.home+self.path
+        return Path+'/First'
 
                  
     def showDir(self, param):
         self.parse(param)
         (dir_list, file_list) = self.getList()
+
+
        
         url_all = ''
         st.sidebar.write("DIRLIST------------------")
         url = "?path=%s"%('')
-        url_all += redirect_url(url,'/',color="#222222")
+        url_all += redirect_url(url,'/',color="#002255")
+        ## st.sidebar.markdown(url_all,unsafe_allow_html=True)
+
+        subpath = self.path[1:].split('/') # 무조건 / 로 시작
+        #st.sidebar.write(subpath)
+        ##url_all = ''
+        url_path = ''
+        for name in subpath:
+            url_path += '/'+name
+            url = "?path=%s"%( url_path)
+            url_all += redirect_url(url,name+'/',color="#002255")
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
+
+
+
         url_all = ''
         for x in dir_list:
             url = "?path=%s"%( self.path+'/'+x)
