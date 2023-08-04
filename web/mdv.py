@@ -112,9 +112,9 @@ class Navi:
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
         dname = os.path.dirname(self.home+self.md)
         fname = os.path.basename(self.home+self.md)
-        st.sidebar.write("dd=%s, ff=%s "%( dname, fname))
+        st.sidebar.write("dd=%s, ff=%s cd=%s"%( dname, fname, os.getcwd()))
         # mdview(self.home+self.md)
-        #mdview(dname, fname)
+        mdview(dname, fname)
 
     def getList(self):
         dir_list = []
@@ -167,6 +167,7 @@ def mdlist(home,path):
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
 
 def mdview(rpath, filename):
+    xdir = os.getcwd();
     os.chdir(rpath)
     tab1, tab2 = st.tabs([filename,"editor"])
     sline = ''
@@ -185,6 +186,7 @@ def mdview(rpath, filename):
         if btn:
             with open(filename, "w") as file:
                 file.write(txt)
+    os.chdir(xdir)
 
 
 def mdfirst(path):
