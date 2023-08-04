@@ -50,7 +50,7 @@ class Navi:
         self.home = home
 
     def parse(self, param):
-        (self.path, self.md) = ( '', None )
+        (self.path, self.md) = ( '', None ) # 논리구조임.
    
         if 'md' in param:
             self.md = str(param['md'][0])
@@ -66,7 +66,7 @@ class Navi:
             self.path = ''
         else:
             self.rdir = self.home+self.path
-        st.sidebar.write("rd= "+self.rdir)
+        st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
         
     
     def getFirst(self, Path=None):
@@ -79,8 +79,6 @@ class Navi:
                  
     def showDir(self, param):
         self.parse(param)
-        st.sidebar.write("path = "+self.path)
-        st.sidebar.write("md = "+self.md)
         (dir_list, file_list) = self.getList()
        
         url_all = ''
