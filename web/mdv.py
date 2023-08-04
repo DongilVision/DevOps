@@ -110,8 +110,11 @@ class Navi:
             url = "?md=%s"%(self.path+'/'+x)
             url_all += redirect_url(url,x )
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
-
-        mdview(self.home+self.md)
+        dname = os.path.dirname(self.home+self.md)
+        fname = os.path.basename(self.home+self.md)
+        st.sidebar.write("dd=%s, ff=%s "%( dname, fname))
+        # mdview(self.home+self.md)
+        #mdview(dname, fname)
 
     def getList(self):
         dir_list = []
@@ -163,7 +166,8 @@ def mdlist(home,path):
         url_all = redirect_url(url,"..",color="#888888") + url_all
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
 
-def mdview(filename):
+def mdview(rpath, filename):
+    os.chdir(rpath)
     tab1, tab2 = st.tabs([filename,"editor"])
     sline = ''
     with tab1:
