@@ -142,9 +142,6 @@ class Navi:
                 return True
         return False
 
-     
-
-
 
 # 디버그를 위하여 현재 디렉토리 show
 
