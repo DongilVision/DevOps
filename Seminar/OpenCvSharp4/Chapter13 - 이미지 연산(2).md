@@ -1,5 +1,7 @@
 # **Chapter13. 이미지 연산(2)**
 ## **개요**
+![1](./img/13/0.png)
+
 이미지 연산은 `하나 또는 둘 이상`의 이미지에 대해 **비트 연산**, 또는 **비교 연산** 을 수행한다. Mat 클래스의 행렬 연산은 OpenCvSharp의 `비트 연산 표현(&, | 등)`을 통해서도 Mat 클래스 간의 연산을 수행할 수 있다.
 
 \* OpenCvSharp에서는 비교 연산 표현(<, = 등)은 지원하지 않음.
@@ -12,7 +14,7 @@
 
 > 원본 이미지: flamingo.jpg
 
-![](./img/13/0.png)
+![2](./img/13/0.png)
 
 ```cs
 Mat src1 = new Mat("fairy.jpg", ImreadModes.ReducedColor2);
@@ -26,7 +28,7 @@ Mat src2 = src1.Flip(FlipMode.Y);
 ### **13.1.1. 논리곱 연산(BitwiseAnd)**
 논리곱 함수 `Cv2.BitwiseAnd()`는 배열과 배열, 배열과 스칼라의 요소별 `논리곱`을 계산한다.
 
-![](./img/13/2.png)
+![3](./img/13/2.png)
 
 **Cv2.BitwiseAnd(원본 배열1, 원본 배열2, 결과 배열)** 으로 논리곱을 적용한다.
 

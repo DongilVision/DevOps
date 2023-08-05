@@ -1,6 +1,11 @@
 
 import streamlit as st
 import os
+import markdown
+import re
+import base64
+from pathlib import Path
+
  
 from streamlit.components.v1 import html
 
@@ -67,7 +72,7 @@ class Navi:
         if self.md == None and len(filelist)>0:
             self.md = self.path+'/'+ filelist[0]
         st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
-        st.sidebar.write(filelist)
+        # st.sidebar.write(filelist)
 
     def getFirst(self, Path=None):
         self.rdir = self.home+self.path
@@ -81,7 +86,7 @@ class Navi:
 
        
         url_all = ''
-        st.sidebar.write("DIRLIST------------------")
+        # st.sidebar.write("DIRLIST------------------")
         url = "?path=%s"%('')
         url_all += redirect_url(url,'/',color="#002255")
         ## st.sidebar.markdown(url_all,unsafe_allow_html=True)
@@ -110,11 +115,12 @@ class Navi:
             url = "?md=%s"%(self.path+'/'+x)
             url_all += redirect_url(url,x )
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
-        dname = os.path.dirname(self.home+self.md)
-        fname = os.path.basename(self.home+self.md)
-        st.sidebar.write("dd=%s, ff=%s cd=%s"%( dname, fname, os.getcwd()))
-        # mdview(self.home+self.md)
-        mdview(dname, fname)
+        if self.md != None :
+            dname = os.path.dirname(self.home+self.md)
+            fname = os.path.basename(self.home+self.md)
+            st.sidebar.write("dd=%s, ff=%s cd=%s"%( dname, fname, os.getcwd()))
+            # mdview(self.home+self.md)
+            mdview(dname, fname)
 
     def getList(self):
         dir_list = []
@@ -169,6 +175,7 @@ def mdlist(home,path):
 def mdview(rpath, filename):
     xdir = os.getcwd();
     os.chdir(rpath)
+    st.sidebar.write("CWD = "+os.getcwd())
     tab1, tab2 = st.tabs([filename,"editor"])
     sline = ''
     with tab1:
@@ -176,8 +183,10 @@ def mdview(rpath, filename):
         with open(filename) as f:
             for line in f:
                 sline += line
-            
-        st.markdown(sline,unsafe_allow_html=True)
+        imgline = markdown_insert_images(sline)  
+        st.markdown(imgline,unsafe_allow_html=True)
+    
+    
     
     with tab2:
         # response_dict = code_editor(sline,lang="python",theme="dark")
@@ -200,7 +209,66 @@ def mdfirst(path):
             return x
     return None
 
-       
+# -----------------------------------------------------------------------------
+
+def markdown_images(markdown):
+    # example image markdown:
+    # ![Test image](images/test.png "Alternate text")
+    # images = re.findall(r'(!\[(?P<image_title>[^\]]+)\]\((?P<image_path>[^\)"\s]+)\s*([^\)]*)\))', markdown)
+    images = re.findall(r'(!\[(?P<image_title>[^\]]*)\]\((?P<image_path>[^\)"\s]+)\s*([^\)]*)\))', markdown)
+    return images
+
+
+def img_to_bytes(img_path):
+    img_bytes = Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
+
+
+def img_to_html(img_path, img_alt):
+    img_format = img_path.split(".")[-1]
+    img_html = f'<img src="data:image/{img_format.lower()};base64,{img_to_bytes(img_path)}" alt="{img_alt}" style="max-width: 100%;">'
+
+    return img_html
+
+
+def markdown_insert_images(markdown):
+    images = markdown_images(markdown)
+
+    for image in images:
+        image_markdown = image[0]
+        image_alt = image[1]
+        image_path = image[2]
+        if os.path.exists(image_path):
+            markdown = markdown.replace(image_markdown, img_to_html(image_path, image_alt))
+    return markdown
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     # subdir 표시
 

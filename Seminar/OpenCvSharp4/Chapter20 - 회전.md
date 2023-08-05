@@ -5,7 +5,7 @@
 ## 이미지 회전(Image Rotation)
 
 <img src="./Source/wine.jpg" width="49%"> <img src="./Source/WineChanged.jpg" width="49%">
-
+![](./0.png)
 
 `이미지 회전`은 강체 변환(Rigid Transformation)과 유사 변환(Similarity Transformation)에 포함되는 변환 중 하나입니다.
 
