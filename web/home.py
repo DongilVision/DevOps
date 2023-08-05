@@ -9,12 +9,13 @@ import subprocess
 st.set_page_config(layout="wide")
 
  
-padding_top = 10
+padding_top = 1
 
 st.markdown(f"""
     <style>
-        .reportview-container .main .block-container{{
+        .block-container {{
             padding-top: {padding_top}rem;
+            vertical-align: top;
         }}
     </style>""",
     unsafe_allow_html=True,

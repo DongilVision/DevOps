@@ -1,14 +1,14 @@
 
 import streamlit as st
 import os
-import markdown
+# import markdown
 import re
 import base64
 from pathlib import Path
 from streamlit_option_menu import option_menu
 # pip install streamlit-option-menu
 from streamlit_js_eval import streamlit_js_eval
-import webbrowser
+# import webbrowser
 
  
 from streamlit.components.v1 import html
@@ -194,23 +194,27 @@ def mdlist(home,path):
 
 def mdview(rpath, filename):
     xdir = os.getcwd();
-    os.chdir(rpath)
-    # st.sidebar.write("CWD = "+os.getcwd())
-    tab1, tab2 = st.tabs([filename,"editor"])
-    sline = ''
-    with tab1:
-        with open(filename) as f:
-            for line in f:
-                sline += line
-        imgline = markdown_insert_images(sline) 
-        st.markdown(imgline,unsafe_allow_html=True)
-    with tab2:
-        # response_dict = code_editor(sline,lang="python",theme="dark")
-        btn = st.button("Update")
-        txt = st.text_area(label="편집내용", value=sline, height=500)
-        if btn:
-            with open(filename, "w") as file:
-                file.write(txt)
+    try:
+        os.chdir(rpath)
+        # st.sidebar.write("CWD = "+os.getcwd())
+        tab1, tab2 = st.tabs([filename,"editor"])
+        sline = ''
+        with tab1:
+            with open(filename) as f:
+                for line in f:
+                    sline += line
+            imgline = markdown_insert_images(sline) 
+            st.markdown(imgline,unsafe_allow_html=True)
+        with tab2:
+            # response_dict = code_editor(sline,lang="python",theme="dark")
+            btn = st.button("Update")
+            txt = st.text_area(label="편집내용", value=sline, height=500)
+            if btn:
+                with open(filename, "w") as file:
+                    file.write(txt)
+    except Exception as e:
+        st.warning(e)
+
     os.chdir(xdir)
 
 
