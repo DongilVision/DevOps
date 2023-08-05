@@ -87,19 +87,9 @@ class Navi:
         self.parse(param)
         (dir_list, file_list) = self.getList()
 
-
-       
-       
-        # st.sidebar.write("DIRLIST------------------")
-       
-        ## st.sidebar.markdown(url_all,unsafe_allow_html=True)
-
         subpath = self.path[1:].split('/') # 무조건 / 로 시작
-        #st.sidebar.write(subpath)
-        ##url_all = ''
         url_all = ''
         url_path = ''
-        st.write(subpath)
         if len(subpath) > 0 :
             url = "?path=%s"%('')
             url_all += redirect_url(url,'/',color="#ff8c00")
@@ -111,12 +101,6 @@ class Navi:
             url_all += redirect_url(url,name,color="#ff8c00")
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
 
-        # url_all = ''
-        # for x in dir_list:
-        #     url = "?path=%s"%( self.path+'/'+x)
-        #     url_all += redirect_url(url,x,color="#005522")
-        # st.sidebar.markdown(url_all,unsafe_allow_html=True)
-
         with st.sidebar:
             if len(dir_list) > 0:
                 choice_dir = option_menu(None,dir_list,
@@ -126,7 +110,7 @@ class Navi:
                         "menu-title": {"font-size": "14px"},
                         "menu-icon":{"font-size":"14px"},
                         "icon": {"color": "black", "font-size": "8px"},
-                        "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#fafa00"},
+                        "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#555555"},
                         "nav-link-selected": {"background-color": "#222222"},
                         })
             if len(file_list) > 0:
@@ -136,7 +120,7 @@ class Navi:
                         "menu-title": {"font-size": "14px"},
                         "menu-icon":{"font-size":"14px"},
                         "icon": {"color": "black", "font-size": "8px"},
-                        "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#2e8b57"},
+                        "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#555555"},
                         "nav-link-selected": {"background-color": "#222222"},
                         })
                 self.md = self.path+'/'+choice
