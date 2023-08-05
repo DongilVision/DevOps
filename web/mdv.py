@@ -5,6 +5,10 @@ import markdown
 import re
 import base64
 from pathlib import Path
+from streamlit_option_menu import option_menu
+# pip install streamlit-option-menu
+from streamlit_js_eval import streamlit_js_eval
+import webbrowser
 
  
 from streamlit.components.v1 import html
@@ -18,8 +22,8 @@ def redirect_button(url: str, text: str= None, color="#FD504D"):
      <a href="{url}" target="_self">
         <div style="
             display: inline-block;
-            padding: 2px 10px 2px 10px ;
-            margin: 3px;
+            padding: 2px 10px 0px 10px ;
+            margin: 30px 30px 30px 30px;
             color: #FFFFFF;
             background-color: {color};
             border-radius: 3px;
@@ -38,7 +42,7 @@ def redirect_url(url: str, text: str= None, color="#FD504D"):
         <div style="
             display: inline-block;
             padding: 1px 5px 1px 5px ;
-            margin: 2px 1px 0px 0px;
+            margin: 2px 1px 5px 0px;
             color: #FFFFFF;
             background-color: {color};
             border-radius: 4px;
@@ -71,7 +75,7 @@ class Navi:
         (dirlist, filelist) = self.getList()
         if self.md == None and len(filelist)>0:
             self.md = self.path+'/'+ filelist[0]
-        st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
+        # st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
         # st.sidebar.write(filelist)
 
     def getFirst(self, Path=None):
@@ -85,42 +89,77 @@ class Navi:
 
 
        
-        url_all = ''
+       
         # st.sidebar.write("DIRLIST------------------")
-        url = "?path=%s"%('')
-        url_all += redirect_url(url,'/',color="#002255")
+       
         ## st.sidebar.markdown(url_all,unsafe_allow_html=True)
 
         subpath = self.path[1:].split('/') # 무조건 / 로 시작
         #st.sidebar.write(subpath)
         ##url_all = ''
+        url_all = ''
         url_path = ''
+        st.write(subpath)
+        if len(subpath) > 0 :
+            url = "?path=%s"%('')
+            url_all += redirect_url(url,'/',color="#ff8c00")
         for name in subpath:
+            if len(name) == 0:
+                continue
             url_path += '/'+name
             url = "?path=%s"%( url_path)
-            url_all += redirect_url(url,name+'/',color="#002255")
+            url_all += redirect_url(url,name,color="#ff8c00")
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
 
+        # url_all = ''
+        # for x in dir_list:
+        #     url = "?path=%s"%( self.path+'/'+x)
+        #     url_all += redirect_url(url,x,color="#005522")
+        # st.sidebar.markdown(url_all,unsafe_allow_html=True)
 
-
-        url_all = ''
-        for x in dir_list:
-            url = "?path=%s"%( self.path+'/'+x)
-            url_all += redirect_url(url,x,color="#005522")
-        st.sidebar.markdown(url_all,unsafe_allow_html=True)
-
-        st.sidebar.write("FILE_LIST------------------")
-        url_all = ''
-        for x in file_list:
-            url = "?md=%s"%(self.path+'/'+x)
-            url_all += redirect_url(url,x )
-        st.sidebar.markdown(url_all,unsafe_allow_html=True)
-        if self.md != None :
-            dname = os.path.dirname(self.home+self.md)
-            fname = os.path.basename(self.home+self.md)
-            st.sidebar.write("dd=%s, ff=%s cd=%s"%( dname, fname, os.getcwd()))
-            # mdview(self.home+self.md)
+        with st.sidebar:
+            if len(dir_list) > 0:
+                choice_dir = option_menu(None,dir_list,
+                    on_change=self.on_change_dir, key='menu_dir',
+                    styles={
+                        "container": {"margin":"0px", "padding": "0px", "font-size": "14px","background-color": "#ff8c00"},
+                        "menu-title": {"font-size": "14px"},
+                        "menu-icon":{"font-size":"14px"},
+                        "icon": {"color": "black", "font-size": "8px"},
+                        "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#fafa00"},
+                        "nav-link-selected": {"background-color": "#222222"},
+                        })
+            if len(file_list) > 0:
+                choice = option_menu(None,file_list,
+                    styles={
+                        "container": {"margin":"0px", "padding": "0px", "font-size": "14px","background-color": "#2e8b57"},
+                        "menu-title": {"font-size": "14px"},
+                        "menu-icon":{"font-size":"14px"},
+                        "icon": {"color": "black", "font-size": "8px"},
+                        "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#2e8b57"},
+                        "nav-link-selected": {"background-color": "#222222"},
+                        })
+                self.md = self.path+'/'+choice
+                dname = os.path.dirname(self.home+self.md)
+                fname = os.path.basename(self.home+self.md)
+                # st.sidebar.write("dd=%s, ff=%s cd=%s"%( dname, fname, os.getcwd()))
+                # mdview(self.home+self.md)
+        if len(file_list) > 0:
             mdview(dname, fname)
+
+    def on_change_dir(self,key):
+        selection = st.session_state[key]
+        url = "?path=%s"%( self.path+'/'+selection)
+        # self.open_page(url)
+        self.nav_to(url)
+        st.write(f"Selection chage to {url}")
+
+    def nav_to(self,url):
+        nav_script = """
+            <meta http-equiv="refresh" content="0; url='%s'">
+        """ % (url)
+        st.write(nav_script, unsafe_allow_html=True)
+
 
     def getList(self):
         dir_list = []
@@ -151,8 +190,8 @@ def mdlist(home,path):
     ## 현재 디렉토리 표시
     updir = path
     count = 10
-    base = 'http://div.iptime.org:58282'
-    base = 'http://192.168.2.51:8501'
+    # base = 'http://div.iptime.org:58282'
+    # base = 'http://192.168.2.51:8501'
     if path == None:
         updir = home
     else:
@@ -172,19 +211,15 @@ def mdlist(home,path):
 def mdview(rpath, filename):
     xdir = os.getcwd();
     os.chdir(rpath)
-    st.sidebar.write("CWD = "+os.getcwd())
+    # st.sidebar.write("CWD = "+os.getcwd())
     tab1, tab2 = st.tabs([filename,"editor"])
     sline = ''
     with tab1:
-        #'pages/project.md'
         with open(filename) as f:
             for line in f:
                 sline += line
-        imgline = markdown_insert_images(sline)  
+        imgline = markdown_insert_images(sline) 
         st.markdown(imgline,unsafe_allow_html=True)
-    
-    
-    
     with tab2:
         # response_dict = code_editor(sline,lang="python",theme="dark")
         btn = st.button("Update")
