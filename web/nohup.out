@@ -7,3 +7,26 @@ Collecting usage statistics. To deactivate, set browser.gatherUsageStats to Fals
   Network URL: http://192.168.2.51:8501
   External URL: http://210.120.28.166:8501
 
+2023-08-06 21:42:13.044 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/jjy/.local/lib/python3.8/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 552, in _run_script
+    exec(code, module.__dict__)
+  File "/home/jjy/project/DevOps/web/home.py", line 59, in <module>
+    nav.showDir(param)
+  File "/home/jjy/project/DevOps/web/mdv.py", line 87, in showDir
+    self.parse(param)
+  File "/home/jjy/project/DevOps/web/mdv.py", line 75, in parse
+    (dirlist, filelist) = self.getList()
+  File "/home/jjy/project/DevOps/web/mdv.py", line 151, in getList
+    f_list = os.listdir(self.rdir)
+FileNotFoundError: [Errno 2] No such file or directory: '../bb'
+2023-08-06 21:56:12.936 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/jjy/.local/lib/python3.8/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 552, in _run_script
+    exec(code, module.__dict__)
+  File "/home/jjy/project/DevOps/web/home.py", line 4, in <module>
+    from mdv import Navi
+  File "/home/jjy/project/DevOps/web/mdv.py", line 113
+    on_change=self.on_change_dir, key='menu_dir',
+    ^
+SyntaxError: invalid syntax

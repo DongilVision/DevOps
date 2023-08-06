@@ -13,8 +13,8 @@ from streamlit_js_eval import streamlit_js_eval
  
 from streamlit.components.v1 import html
 
-def script():
-    html(f"""<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>""")
+# def script():
+#     html(f"""<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>""")
 
 def redirect_button(url: str, text: str= None, color="#FD504D"):
     st.markdown(
@@ -82,7 +82,12 @@ class Navi:
         self.rdir = self.home+self.path
         return Path+'/First'
 
-                 
+    def build_icons(self,list,icon_name):
+        icon_list = []
+        for name in list :
+            icon_list.append(icon_name)
+        return icon_list
+
     def showDir(self, param):
         self.parse(param)
         (dir_list, file_list) = self.getList()
@@ -92,34 +97,38 @@ class Navi:
         url_path = ''
         if len(subpath) > 0 :
             url = "?path=%s"%('')
-            url_all += redirect_url(url,'/',color="#ff8c00")
+            url_all += redirect_url(url,'/',color="#7b68ee")
         for name in subpath:
             if len(name) == 0:
                 continue
             url_path += '/'+name
             url = "?path=%s"%( url_path)
-            url_all += redirect_url(url,name,color="#ff8c00")
+            url_all += redirect_url(url,name,color="#7b68ee")
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
+
+        
 
         with st.sidebar:
             if len(dir_list) > 0:
                 choice_dir = option_menu(None,dir_list,
+                    icons=self.build_icons(dir_list,'folder-fill'),
                     on_change=self.on_change_dir, key='menu_dir',
                     styles={
-                        "container": {"margin":"0px", "padding": "0px", "font-size": "14px","background-color": "#ff8c00"},
+                        "container": {"margin":"0px", "padding": "0px", "font-size": "14px","background-color": "#7b68ee"},
                         "menu-title": {"font-size": "14px"},
                         "menu-icon":{"font-size":"14px"},
-                        "icon": {"color": "black", "font-size": "8px"},
+                        "icon": {"color": "black", "font-size": "14px"},
                         "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#555555"},
                         "nav-link-selected": {"background-color": "#222222"},
                         })
             if len(file_list) > 0:
                 choice = option_menu(None,file_list,
+                    icons=self.build_icons(file_list,'file-text-fill'),
                     styles={
                         "container": {"margin":"0px", "padding": "0px", "font-size": "14px","background-color": "#2e8b57"},
                         "menu-title": {"font-size": "14px"},
                         "menu-icon":{"font-size":"14px"},
-                        "icon": {"color": "black", "font-size": "8px"},
+                        "icon": {"color": "black", "font-size": "14px"},
                         "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#555555"},
                         "nav-link-selected": {"background-color": "#222222"},
                         })
@@ -157,6 +166,8 @@ class Navi:
                     dir_list.append(x)
                 else:
                     file_list.append(x)
+        dir_list.sort()
+        file_list.sort()
         return ( dir_list, file_list)
 
     def _contains(self,list, name):
@@ -174,8 +185,6 @@ def mdlist(home,path):
     ## 현재 디렉토리 표시
     updir = path
     count = 10
-    # base = 'http://div.iptime.org:58282'
-    # base = 'http://192.168.2.51:8501'
     if path == None:
         updir = home
     else:
@@ -230,6 +239,8 @@ def mdfirst(path):
     return None
 
 # -----------------------------------------------------------------------------
+# 이미지를 markdown에 넣는 부분
+# -----------------------------------------------------------------------------
 
 def markdown_images(markdown):
     # example image markdown:
@@ -263,57 +274,4 @@ def markdown_insert_images(markdown):
             markdown = markdown.replace(image_markdown, img_to_html(image_path, image_alt))
     return markdown
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    # subdir 표시
-
-
-    url_all =''
-    file_list = os.listdir(path)
-    for x in file_list:
-        if 'pycache' in x:
-            continue
-        if os.path.isdir(path+'/'+x):
-            url = "%s?path=%s"%(base,path+'/'+x)
-            url_all += redirect_url(url,x,color="#222222")
-    #         url_all += url +'\n'
-    st.sidebar.markdown(url_all,unsafe_allow_html=True)
-    
-    for x in file_list:
-        if 'pycache' in x:
-            continue
-        if os.path.isdir(x):
-            continue
-        if ".md" in x:
-            url = "%s?md=%s"%(base,path+'/'+x)
-            url_all = redirect_url(url,x)
-            st.sidebar.markdown(url_all,unsafe_allow_html=True)
-            
-            
-    
-
+ 
