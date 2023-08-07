@@ -40,4 +40,49 @@
 * routetrace
 * arp 
 
-C# 에서 IP 읽어오는 법
+# C# 에서 IP 읽어오는 법
+
+## 1. xaml에서 ip를 출력 시킬 곳에 Binding을 합니다.
+
+```xml
+<Window
+    Title = "{Binding MainWindowTitle}">
+</Window>
+```
+
+* 위의 예제는 Title에 적용하여 wpf실행시 창에 출력되도록 만들었습니다.
+
+## 2. IP를 구하는 메소드 & 인터페이스 구현
+
+```cs
+ private string GetLocalIPAddress() {
+            // IP 주소를 가져오는 방법은 다양하지만, 간단하게 Dns 클래스를 사용합니다.
+            string hostName = Dns.GetHostName();
+            IPHostEntry hostEntry = Dns.GetHostEntry(hostName);
+            IPAddress ipAddress = hostEntry.AddressList.FirstOrDefault(ip => ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+            return ipAddress?.ToString() ?? "Unknown";
+        }
+
+        // INotifyPropertyChanged 인터페이스 구현
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+```
+
+## 3. Title에 IP 추가시키기
+
+```cs
+ public MainWindow() {
+            InitializeComponent();
+            DataContext = this;
+
+            // 자신의 IP 주소를 가져와서 Title에 추가합니다.
+            string ipAddress = GetLocalIPAddress();
+            MainWindowTitle = "TCP TESTER - " + ipAddress;
+        }
+```
+
++ 함수를 호출하여 IP를 ipAddress 변수에 저장합니다.
++ 바인딩을 통하여 Title에 IP를 출력합니다.
+
