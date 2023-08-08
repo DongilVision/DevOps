@@ -1,17 +1,16 @@
-##  <IPC 포멧>
->### Identifier (5Byte) - 인식자, Packet ID
+## IPC 포멧
+### Identifier (5Byte) - 인식자, Packet ID (page 8)
 
-+ Identifier(5Bytes) = Start of Packet(1Bytes) + 송신 Device ID(1Bytes) + 수신 Device ID(1Bytes) + Handshake(1Bytes)
-    + Start of Packet : [0xFFFF]
-    + 송신 Device 
-        + pc : [0x00]
-        + smart Camera : [0x01] ~ [0xFE]
-    + 수신 Device
-        + pc : [0x00]
-        + smart Camera : [0x01] ~ [0xFE]
-    + Handshake
-        + Command : [0xFF]
-        + Response : ACK(0x00), NACK(0x01), Command SKIP(0x02)
++ Identifier(5Bytes) = Start of Packet(2Bytes) + 송신 Device ID(1Bytes) + 수신 Device ID(1Bytes) + Handshake(1Bytes)
+   
+
+| Start of Packet | 송신 Device | 수신 Device | Handshake |
+|-|-|-|-|
+| 2 Bytes | 1 Bytes |  1 Bytes |  1 Bytes | 
+| [0xFFFF] | pc : [0x00]<br> smart Camera : [0x01] ~ [0xFE] |  pc : [0x00]<br> smart Camera : [0x01] ~ [0xFE] |  [0xFF]<br> Response : ACK(0x00), NACK(0x01), Command SKIP(0x02) | 
+
+
+
 
 ### MainCode(1Byte) - 주 색인
 + [0x01](page 12) : Interface Configure (인터페이스 구성) 
