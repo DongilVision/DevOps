@@ -1,4 +1,26 @@
-### IPC 포멧정리
-하기에 IPC 데이타 포맷을 정리바랍니다.
-* Identifier (5Byte)
-* MainCode(1Byte)
+##  <IPC 포멧>
+>### Identifier (5Byte) - 인식자, Packet ID
+
++ Identifier(5Bytes) = Start of Packet(1Bytes) + 송신 Device ID(1Bytes) + 수신 Device ID(1Bytes) + Handshake(1Bytes)
+    + Start of Packet : [0xFFFF]
+    + 송신 Device 
+        + pc : [0x00]
+        + smart Camera : [0x01] ~ [0xFE]
+    + 수신 Device
+        + pc : [0x00]
+        + smart Camera : [0x01] ~ [0xFE]
+    + Handshake
+        + Command : [0xFF]
+        + Response : ACK(0x00), NACK(0x01), Command SKIP(0x02)
+
+### MainCode(1Byte) - 주 색인
++ [0x01] : Interface Configure (인터페이스 구성) 
++ [0x02] : Platform Version
++ [0x03] : Image Frame Configure (이미지 프레임 구성)
++ [0x04] : Illumination Controller Configure (조명 컨트롤러 구성)
++ [0x05] : I/O
++ [0x06] : File Management
++ [0x07] : File Transfer PtoS
++ [0x08] : File Transfer StoP
++ [0x09] : Operation Result
++ [0x0A] : Operation Result
