@@ -9,8 +9,7 @@
 | 2 Bytes | 1 Bytes |  1 Bytes |  1 Bytes | 
 | [0xFFFF] | pc : [0x00]<br> smart Camera : [0x01] ~ [0xFE] |  pc : [0x00]<br> smart Camera : [0x01] ~ [0xFE] |  [0xFF]<br> Response : ACK(0x00), NACK(0x01), Command SKIP(0x02) | 
 
-
-
+<br>
 
 ### MainCode(1Byte) - 주 색인
 + [0x01](page 12) : Interface Configure (인터페이스 구성) 
