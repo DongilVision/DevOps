@@ -1,4 +1,4 @@
-## IPC 포멧
+## < IPC 포멧 >
 ### Identifier (5Byte) - 인식자, Packet ID (page 8)
 
 + Identifier(5Bytes) = Start of Packet(2Bytes) + 송신 Device ID(1Bytes) + 수신 Device ID(1Bytes) + Handshake(1Bytes)
