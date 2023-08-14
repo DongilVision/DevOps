@@ -30,3 +30,4 @@ Traceback (most recent call last):
     on_change=self.on_change_dir, key='menu_dir',
     ^
 SyntaxError: invalid syntax
+2023-08-11 16:18:01.999 Session with id 7a9a1139-61bb-4a35-a534-7ee6fd67d6ab is already connected! Connecting to a new session.
