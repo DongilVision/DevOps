@@ -1,5 +1,14 @@
 # < IPC 포멧 >
 
+### 0. 목차
+1. Packet ID
+2. Main
+3. Sub
+4. Length
+5. Data
+
+<br>
+
 |< `Packet`의 구성 >|||||||
 |-|-|-|-|-|-|-|
 | 구성요소 5가지            | `Packet ID`| `Main Type` | `Sub Type` | `Length` | `Data`           | 
@@ -47,3 +56,5 @@
 <br>
 
 ### 5. `DATA`
+
+<br>
