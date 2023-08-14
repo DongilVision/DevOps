@@ -47,29 +47,3 @@
 <br>
 
 ### 5. `DATA`
-
-<br>
-
----
-
-<br>
-
-## < Image 수신 방법 > 
-
-|                          | `Packet ID`| `Main Type` | `Sub Type` | `Length` | `Data`           | 
-|-                         |-           |-            |-           |-         |-                 |
-| `Image Delivery Path`    | 5 Bytes    | 1 Bytes     | 2 Bytes    | 24 Bytes | 30624 Bytes(max) |
-| 5000번 port 신호         |             | 0x06       | 0x0006     | 1        | 
-
-- 5000번 port로 신호를 보내게 되면
-- 5000번 port로 응답이 오고
-    - 정상적인 신호를 보내면 `Handshake`가 `0xFF` -> `0x00`으로 바뀌어 수신이 된다. 
-- 5001번 port로 Image를 수신하게 된다. 
-
-```
-5000q번 port로 이미지를 요청하는 송신 : 
-FF FF 00 01 FF 06 00 06 00 00 00 01 01  
-
-5000번 port로 요청 송신이 제대로 보내졌다는 응답 : 
-FF FF 00 01 00 06 00 06 00 00 00 01 01  
-```
