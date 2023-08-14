@@ -17,7 +17,7 @@
 ### 2. 영상 패킷의 구성
 - 영상 패킷 = Packet ID + Main Type + Sub Type + Header + Data
 
-|      | `Packet ID`| `Main Type` | `Sub Type` | `Header` | `Data`           | 
+|      | Packet ID| Main Type | Sub Type | Header | Data           | 
 |-     |-           |-            |-           |-         |-                 |
 | Size | 5 Bytes    | 1 Bytes     | 2 Bytes    | 24 Bytes | 30624 Bytes(max) |
 
@@ -26,12 +26,12 @@
 ### 3. 예제
 
 아래 코드는 수신한 이미지를 16진수 코드로 출력한 것이다.
-```     
+     
         01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 
 
 0000    FF FF 01 00 FF 00 00 00 8C 3A 00 00 2F 44 00 00 
 0010    01 00 00 00 03 00 80 02 E0 01 01 00 00 00 01 00
-```
+
 
 #### - 예제 분석 -
 - Packet ID 
