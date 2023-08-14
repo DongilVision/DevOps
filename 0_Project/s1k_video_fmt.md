@@ -10,10 +10,9 @@
 ### 2. 영상 패킷의 구성
 - 영상 패킷 = Packet ID + Main Type + Sub Type + Header + Data
 
-|                          | `Packet ID`| `Main Type` | `Sub Type` | `Header` | `Data`           | 
-|-                         |-           |-            |-           |-         |-                 |
-| `Image Delivery Path`    | 5 Bytes    | 1 Bytes     | 2 Bytes    | 24 Bytes | 30624 Bytes(max) |
-| 5000번 port 신호         |             | 0x06       | 0x0006     | 1        | 
+|      | `Packet ID`| `Main Type` | `Sub Type` | `Header` | `Data`           | 
+|-     |-           |-            |-           |-         |-                 |
+| Size | 5 Bytes    | 1 Bytes     | 2 Bytes    | 24 Bytes | 30624 Bytes(max) |
 
 <br>
 
