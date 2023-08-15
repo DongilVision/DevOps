@@ -16,25 +16,6 @@ from streamlit.components.v1 import html
 # def script():
 #     html(f"""<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>""")
 
-def redirect_button(url: str, text: str= None, color="#FD504D"):
-    st.markdown(
-    f"""
-     <a href="{url}" target="_self">
-        <div style="
-            display: inline-block;
-            padding: 2px 10px 0px 10px ;
-            margin: 30px 30px 30px 30px;
-            color: #FFFFFF;
-            background-color: {color};
-            border-radius: 3px;
-            text-decoration: none;">
-            {text}
-        </div>
-    </a>
-    """,
-    unsafe_allow_html=True
-    )
-
 def redirect_url(url: str, text: str= None, color="#FD504D"):
     str =   f"""
     
@@ -78,8 +59,9 @@ class Navi:
         (dirlist, filelist) = self.getList()
         if self.md == None and len(filelist)>0:
             self.md = self.path+'/'+ filelist[0]
-        st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
-        # st.sidebar.write(filelist)
+        # -----
+        # Debug
+        # st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
 
     def getFirst(self, Path=None):
         self.rdir = self.home+self.path
@@ -109,32 +91,32 @@ class Navi:
             url_all += redirect_url(url,name,color="#7b68ee")
         st.sidebar.markdown(url_all,unsafe_allow_html=True)
 
-        
-
         with st.sidebar:
             if len(dir_list) > 0:
                 choice_dir = option_menu(None,dir_list,
                     icons=self.build_icons(dir_list,'folder-fill'),
                     on_change=self.on_change_dir, key='menu_dir',
                     styles={
-                        "container": {"margin":"0px", "padding": "0px", "font-size": "14px","background-color": "#7b68ee"},
+                        "container": {"margin":"0px", "padding": "0|important", "font-size": "14px","background-color": "#7b68ee"},
                         "menu-title": {"font-size": "14px"},
                         "menu-icon":{"font-size":"14px"},
-                        "icon": {"color": "black", "font-size": "14px"},
+                        "icon": {"color": "white", "font-size": "16px"},
                         "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#555555"},
-                        "nav-link-selected": {"background-color": "#222222"},
+                        "nav-link-selected": {"background-color": "#888888"},
                         })
             if len(file_list) > 0:
-                choice = option_menu(None,file_list,
+                choice = option_menu(None,
+                    file_list,
+                    default_index= self.find_index(file_list,self.md),
                     icons=self.build_icons(file_list,'file-text-fill'),
                     on_change=self.on_select_file, key='menu_file',
                     styles={
                         "container": {"margin":"0px", "padding": "-2", "font-size": "14px","background-color": "#2e8b57"},
                         "menu-title": {"font-size": "14px"},
                         "menu-icon":{"font-size":"14px"},
-                        "icon": {"color": "black", "font-size": "14px"},
+                         "icon": {"color": "white", "font-size": "16px"},
                         "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#555555"},
-                        "nav-link-selected": {"background-color": "#222222"},
+                         "nav-link-selected": {"background-color": "#888888"},
                         })
                 #self.md = self.path+'/'+choice
                 dname = os.path.dirname(self.home+self.md)
@@ -157,6 +139,13 @@ class Navi:
         # self.open_page(url)
         self.nav_to(url)
         st.write(f"Selection chage to {url}")
+
+    def find_index(self,file_list, name):
+        name = os.path.basename(self.home+self.md)
+        if name in file_list:
+            return file_list.index(name)
+        else:
+            return 0
 
     def nav_to(self,url):
         nav_script = """
@@ -188,32 +177,8 @@ class Navi:
         return False
 
 
-# 디버그를 위하여 현재 디렉토리 show
-
-def mdlist(home,path):
-    url_all =''
-    # st.sidebar.write("cwd = "+path)
-    ## 현재 디렉토리 표시
-    updir = path
-    count = 10
-    if path == None:
-        updir = home
-    else:
-        updir = home+'/'+path
-    while updir != home:
-        url = "%s?path=%s"%(base,updir)
-        url_all = redirect_url(url,'/'+os.path.basename(updir),color="#888888") + url_all
-        updir = os.path.dirname(updir)
-        count -=1
-        if count < 0:
-            break
-    if count < 10:
-        url = "%s?path=%s"%(base,updir)
-        url_all = redirect_url(url,"..",color="#888888") + url_all
-        st.sidebar.markdown(url_all,unsafe_allow_html=True)
-
 def mdview(rpath, filename):
-    xdir = os.getcwd();
+    xdir = os.getcwd()
     try:
         os.chdir(rpath)
         # st.sidebar.write("CWD = "+os.getcwd())
@@ -237,17 +202,6 @@ def mdview(rpath, filename):
 
     os.chdir(xdir)
 
-
-def mdfirst(path):
-    file_list = os.listdir(path)
-    for x in file_list:
-        if 'pycache' in x:
-            continue
-        if os.path.isdir(x):
-            continue
-        if ".md" in x:
-            return x
-    return None
 
 # -----------------------------------------------------------------------------
 # 이미지를 markdown에 넣는 부분

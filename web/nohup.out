@@ -31,3 +31,12 @@ Traceback (most recent call last):
     ^
 SyntaxError: invalid syntax
 2023-08-11 16:18:01.999 Session with id 7a9a1139-61bb-4a35-a534-7ee6fd67d6ab is already connected! Connecting to a new session.
+2023-08-15 20:29:08.474 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/jjy/.local/lib/python3.8/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 552, in _run_script
+    exec(code, module.__dict__)
+  File "/home/jjy/project/DevOps/web/home.py", line 59, in <module>
+    nav.showDir(param)
+  File "/home/jjy/project/DevOps/web/mdv.py", line 146, in showDir
+    mdview(dname, fname)
+NameError: name 'mdview' is not defined
