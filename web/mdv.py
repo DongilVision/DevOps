@@ -54,6 +54,9 @@ def redirect_url(url: str, text: str= None, color="#FD504D"):
     return str
 
 # path는 논리적 위치 : fpath 물리적주소
+
+
+# home, path, md
 class Navi:
     def __init__(self, home):
         self.home = home
@@ -75,7 +78,7 @@ class Navi:
         (dirlist, filelist) = self.getList()
         if self.md == None and len(filelist)>0:
             self.md = self.path+'/'+ filelist[0]
-        # st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
+        st.sidebar.write("path=%s, md=%s, rd=%s"%( self.path, self.md, self.rdir))
         # st.sidebar.write(filelist)
 
     def getFirst(self, Path=None):
@@ -133,7 +136,7 @@ class Navi:
                         "nav-link": {"font-size": "14px", "text-align": "left", "margin":"0px","Padding":"0px", "--hover-color": "#555555"},
                         "nav-link-selected": {"background-color": "#222222"},
                         })
-                self.md = self.path+'/'+choice
+                #self.md = self.path+'/'+choice
                 dname = os.path.dirname(self.home+self.md)
                 fname = os.path.basename(self.home+self.md)
                 # st.sidebar.write("dd=%s, ff=%s cd=%s"%( dname, fname, os.getcwd()))
@@ -150,7 +153,7 @@ class Navi:
     
     def on_select_file(self,key):
         selection = st.session_state[key]
-        url = "?file=%s"%( self.path+'/'+selection)
+        url = "?md=%s"%( self.path+'/'+selection)
         # self.open_page(url)
         self.nav_to(url)
         st.write(f"Selection chage to {url}")
