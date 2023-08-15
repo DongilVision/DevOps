@@ -1,16 +1,14 @@
-# < IPC 포멧 >
-
-### 0. 목차
-1. Packet ID
-2. Main
-3. Sub
-4. Length
-5. Data
+### IPC
+* S1000 IPC는 영상등 각종 파라메터를 제어하기 위하여 사용된다.
+* 인식자(8바이트) + (값길이,값) 으로 구성된다.
+* 인식자는 PacketID, MainCode, SubCode 로구성된다.
+* SET/GET으로 구성된다.
+ 
 
 <br>
 
-|< Packet의 구성 >|||||||
-|-|-|-|-|-|-|-|
+|< Packet의 구성 >||||||
+|-|-|-|-|-|-|
 | 구성요소 5가지            | Packet ID| Main Type | Sub Type | Length | Data           | 
 | Control Path           | 5 Bytes    | 1 Bytes     | 2 Bytes    | 4 Bytes  | 192 Bytes(max)   |
 | Image Delivery Path    | 5 Bytes    | 1 Bytes     | 2 Bytes    | 24 Bytes | 30624 Bytes(max) |
