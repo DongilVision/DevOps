@@ -124,8 +124,9 @@ class Navi:
             if len(file_list) > 0:
                 choice = option_menu(None,file_list,
                     icons=self.build_icons(file_list,'file-text-fill'),
+                    on_change=self.on_select_file, key='menu_file',
                     styles={
-                        "container": {"margin":"0px", "padding": "0px", "font-size": "14px","background-color": "#2e8b57"},
+                        "container": {"margin":"0px", "padding": "-2", "font-size": "14px","background-color": "#2e8b57"},
                         "menu-title": {"font-size": "14px"},
                         "menu-icon":{"font-size":"14px"},
                         "icon": {"color": "black", "font-size": "14px"},
@@ -143,6 +144,13 @@ class Navi:
     def on_change_dir(self,key):
         selection = st.session_state[key]
         url = "?path=%s"%( self.path+'/'+selection)
+        # self.open_page(url)
+        self.nav_to(url)
+        st.write(f"Selection chage to {url}")
+    
+    def on_select_file(self,key):
+        selection = st.session_state[key]
+        url = "?file=%s"%( self.path+'/'+selection)
         # self.open_page(url)
         self.nav_to(url)
         st.write(f"Selection chage to {url}")
