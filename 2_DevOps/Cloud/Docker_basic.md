@@ -1,3 +1,11 @@
+
+# checklist
+
+[] ssh 접속이 되는가?
+[] 사용자 id 와 파일시스템이 일치하는가?
+[] git 업데이트는 잘되는가?
+[] 자동재기동되는가?
+
 # basic-include
 ```
 FROM ubuntu:22.04
