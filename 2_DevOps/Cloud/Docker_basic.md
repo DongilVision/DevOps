@@ -22,6 +22,7 @@ RUN mkdir -p /var/run/sshd \
     && ssh-keygen -A
 
 EXPOSE 22
+
 ```
 # USER-ADD
 
@@ -43,5 +44,6 @@ RUN groupadd -g $GROUP_ID $USER \
     && useradd -s /bin/bash -u $USER_ID -g $GROUP_ID -m $USER
  
 RUN echo "${USER}:1234" | chpasswd
-RUN sed -i "s/^#Port 22/Port 22/g" /etc/ssh/sshd_config
+
+
 ```
