@@ -1,3 +1,6 @@
+
+# SSH-VSCODE
+
 ```
 # *************************************************************************************
 #   2. SSHD / 권한시스템
@@ -19,4 +22,26 @@ RUN mkdir -p /var/run/sshd \
     && ssh-keygen -A
 
 EXPOSE 22
+```
+# USER-ADD
+
+```
+# *************************************************************************************
+# #  7. `pwd` 사용할때는 반드시 계정일치 필요
+# 사용자 /유저/그룹 등록
+# USER = jjy  host_gid = 2014 host_uid = 2014
+# docker run --rm -it aainka/webdesk:0.1 /bin/bash
+# *************************************************************************************
+
+ARG USER=jjy
+RUN echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER} \
+    && chmod 0440 /etc/sudoers.d/${USER}
+
+ARG USER_ID=1001
+ARG GROUP_ID=1001
+RUN groupadd -g $GROUP_ID $USER \
+    && useradd -s /bin/bash -u $USER_ID -g $GROUP_ID -m $USER
+ 
+RUN echo "${USER}:1234" | chpasswd
+RUN sed -i "s/^#Port 22/Port 22/g" /etc/ssh/sshd_config
 ```
