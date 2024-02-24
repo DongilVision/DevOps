@@ -1,4 +1,21 @@
+# basic-include
+```
+FROM ubuntu:22.04
+ 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Seoul
 
+RUN apt-get update \
+    && apt-get install -y tzdata \
+    && apt-get install -y python3 pip git \
+    && apt-get install -y net-tools iputils-ping dnsutils \
+    && apt-get install -y vim git curl wget sudo unzip \
+    && apt-get install -y gnupg software-properties-common 
+
+RUN pip install --upgrade pip
+
+
+```
 # SSH-VSCODE
 
 ```
