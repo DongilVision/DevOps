@@ -1,0 +1,18 @@
+{
+	"nodes":[
+		{"id":"68998cf9f12173a2","type":"file","file":"프로젝트 관리.canvas","x":-1160,"y":-1020,"width":200,"height":63},
+		{"id":"e572a7e8d52d823e","type":"text","text":"오늘할일","x":-1440,"y":-1018,"width":250,"height":60},
+		{"id":"d814cb8496346fe0","type":"text","text":"알라스카","x":-1100,"y":-698,"width":250,"height":60},
+		{"id":"d3a6961b421b29e8","type":"text","text":"pLC","x":-713,"y":-800,"width":250,"height":60},
+		{"id":"c334efcd50040097","type":"text","text":"렌즈왜곡","x":-713,"y":-720,"width":250,"height":60},
+		{"id":"5e6b1dc5ec350b39","type":"text","text":"USB 카메라 드라이버","x":-713,"y":-640,"width":250,"height":60},
+		{"id":"293ec66ae1e7b75f","type":"text","text":"티눈","x":-1085,"y":-540,"width":250,"height":60},
+		{"id":"87c73812227a2e11","type":"text","text":"고기리 온수 보일러","x":-1085,"y":-380,"width":250,"height":67},
+		{"id":"3ac4a01bb57141ce","x":-1709,"y":-741,"width":250,"height":60,"type":"text","text":"Obsidian - Git연결방법\n한글전환"}
+	],
+	"edges":[
+		{"id":"61a921bf41ac22e7","fromNode":"d814cb8496346fe0","fromSide":"right","toNode":"d3a6961b421b29e8","toSide":"left"},
+		{"id":"0644022c174d40f3","fromNode":"d814cb8496346fe0","fromSide":"right","toNode":"c334efcd50040097","toSide":"left"},
+		{"id":"53aa2f46d9fcb460","fromNode":"d814cb8496346fe0","fromSide":"right","toNode":"5e6b1dc5ec350b39","toSide":"left"}
+	]
+}

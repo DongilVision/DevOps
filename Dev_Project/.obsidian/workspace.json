@@ -27,15 +27,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "프로젝트 관리.canvas",
+                "file": "오늘 할일.canvas",
                 "viewState": {
-                  "x": 201.5,
-                  "y": 424.5,
-                  "zoom": -0.35052573435379153
+                  "x": -952.5,
+                  "y": -617.5,
+                  "zoom": 0
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "프로젝트 관리"
+              "title": "오늘 할일"
             }
           }
         ],
@@ -182,8 +182,9 @@
   },
   "active": "cb08993aa4c65141",
   "lastOpenFiles": [
-    "Welcome.md",
     "프로젝트 관리.canvas",
+    "오늘 할일.canvas",
+    "Welcome.md",
     "0_Project/s1k_video_fmt.md",
     "0_Project/s1k_tcp_broken.md",
     "0_Project/label_list.md",
