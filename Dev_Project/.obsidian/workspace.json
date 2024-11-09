@@ -127,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "프로젝트 관리.canvas",
+                "file": "ai_installation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 프로젝트 관리"
+              "title": "ai_installation의 나가는 링크"
             }
           },
           {
@@ -160,7 +160,8 @@
               "title": "Outline of 프로젝트 관리"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -173,10 +174,11 @@
       "canvas:새 캔버스 만들기": false,
       "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false
+      "command-palette:명령어 팔레트 열기": false,
+      "yet-another-obsidian-synchronizer:YAOS": false
     }
   },
-  "active": "cb08993aa4c65141",
+  "active": "83ed3489d8a0f3cc",
   "lastOpenFiles": [
     "오늘 할일.canvas",
     "Untitled 1",
