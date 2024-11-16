@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ai_installation.md",
+                "file": "Untitled.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ai_installation"
+              "title": "Untitled"
             }
           }
         ],
@@ -127,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ai_installation.md",
+                "file": "Untitled.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "ai_installation의 나가는 링크"
+              "title": "Untitled의 나가는 링크"
             }
           },
           {
@@ -178,19 +178,19 @@
       "yet-another-obsidian-synchronizer:YAOS": false
     }
   },
-  "active": "83ed3489d8a0f3cc",
+  "active": "cb08993aa4c65141",
   "lastOpenFiles": [
+    "Welcome.md",
+    "ai_installation.md",
     "오늘 할일.canvas",
     "Untitled 1",
     "Untitled",
     "프로젝트 관리.canvas",
-    "Welcome.md",
     "0_Project/s1k_video_fmt.md",
     "0_Project/s1k_tcp_broken.md",
     "0_Project/label_list.md",
     "0_Project/ai_installation.md",
     "0_Project/SC1000/tcp_review.md",
-    "ai_installation.md",
     "0_Project/PC-Vision/camera.md",
     "0_Project/PC-Vision/read.me",
     "0_Project/SC1000",
