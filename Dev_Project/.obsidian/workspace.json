@@ -25,14 +25,17 @@
             "id": "cb08993aa4c65141",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Untitled.md",
-                "mode": "source",
-                "source": false
+                "file": "오늘 할일.canvas",
+                "viewState": {
+                  "x": -1086,
+                  "y": -666.5,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "Untitled"
+              "icon": "lucide-layout-dashboard",
+              "title": "오늘 할일"
             }
           }
         ],
@@ -127,12 +130,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Untitled.md",
+                "file": "오늘 할일.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Untitled의 나가는 링크"
+              "title": "오늘 할일의 나가는 링크"
             }
           },
           {
@@ -180,15 +183,17 @@
   },
   "active": "cb08993aa4c65141",
   "lastOpenFiles": [
-    "Welcome.md",
+    "0_Project/label_list.md",
     "ai_installation.md",
+    "프로젝트 관리.canvas",
     "오늘 할일.canvas",
+    "create a link.md",
+    "Welcome.md",
+    "Untitled.md",
     "Untitled 1",
     "Untitled",
-    "프로젝트 관리.canvas",
     "0_Project/s1k_video_fmt.md",
     "0_Project/s1k_tcp_broken.md",
-    "0_Project/label_list.md",
     "0_Project/ai_installation.md",
     "0_Project/SC1000/tcp_review.md",
     "0_Project/PC-Vision/camera.md",
@@ -196,7 +201,6 @@
     "0_Project/SC1000",
     "0_Project/PC-Vision",
     "0_Project",
-    "Untitled.md",
     "44"
   ]
 }
