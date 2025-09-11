@@ -1,0 +1,9 @@
+# SSH File Transfer Client Dependencies
+# SSH/SFTP 라이브러리
+paramiko>=3.0.0
+
+# GUI 프레임워크
+PySide6>=6.5.0
+
+# 기타 유틸리티
+pathlib2>=2.3.7; python_version < "3.4"

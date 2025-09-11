@@ -1,0 +1,113 @@
+# SSH 파일 전송 클라이언트 클래스 설계서
+
+## 1. 핵심 클래스
+
+### SSH 연결 관리
+```
+SSHConnectionManager
+- ssh_client: paramiko.SSHClient
+- sftp_client: paramiko.SFTPClient
+- is_connected: bool
+
++ establish_connection(host, port, username, password/key) -> bool
++ close_connection() -> None
++ get_sftp_client() -> paramiko.SFTPClient
++ is_alive() -> bool
+```
+
+### 파일 브라우저
+```
+SFTPFileBrowser
+- ssh_manager: SSHConnectionManager
+- local_path: Path
+- remote_path: str
+- local_files: List[FileInfo]
+- remote_files: List[SFTPFileInfo]
+
++ refresh_local() -> None
++ refresh_remote() -> None
++ upload_file(local_file) -> bool
++ download_file(remote_file) -> bool
++ create_remote_directory(name) -> bool
++ delete_remote_file(name) -> bool
+```
+
+### UI 컴포넌트
+```
+ClientUI (QMainWindow)
+- ssh_manager: SSHConnectionManager
+- file_browser: SFTPFileBrowser
+- local_tree_widget: FileTreeWidget
+- remote_tree_widget: FileTreeWidget
+- transfer_panel: TransferPanel
+
++ connect_to_server(host, port, username, auth) -> None
++ disconnect() -> None
++ refresh_views() -> None
+```
+
+```
+ConnectionDialog (QDialog)
+- host_input: QLineEdit
+- port_input: QSpinBox
+- username_input: QLineEdit
+- password_input: QLineEdit
+- key_file_input: QLineEdit
+
++ get_connection_info() -> tuple
++ validate_input() -> bool
+```
+
+```
+FileTreeWidget (QTreeWidget)
+- is_remote: bool
+- file_browser: SFTPFileBrowser
+
++ refresh() -> None
++ get_selected_files() -> List[str]
++ handle_double_click(item) -> None
+```
+
+### 파일 정보
+```
+FileInfo (로컬 파일)
+- path: Path
+- name: str
+- size: int
+- is_directory: bool
+- modified_time: datetime
+- permissions: str
+```
+
+```
+SFTPFileInfo (원격 파일)
+- name: str
+- full_path: str
+- size: int
+- is_directory: bool
+- modified_time_timestamp: float
+- permissions: str
+```
+
+## 2. 클래스 관계도
+
+```
+ClientUI
+├── SSHConnectionManager
+├── SFTPFileBrowser
+│   └── SSHConnectionManager
+├── FileTreeWidget (로컬)
+├── FileTreeWidget (원격)
+└── TransferPanel
+
+ConnectionDialog → ClientUI
+```
+
+## 3. 실행 흐름
+
+1. ClientUI 시작
+2. ConnectionDialog로 SSH 연결 설정
+3. SSHConnectionManager로 SSH 연결
+4. SFTPFileBrowser로 파일 시스템 탐색
+5. FileTreeWidget으로 파일 목록 표시
+6. 파일 전송 시 TransferPanel에서 진행 상황 표시
